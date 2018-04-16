@@ -1,0 +1,1971 @@
+﻿/* Menu ToolBar -----------------------------------------------------------------------------------------------------------------------------*/
+
+.RadMenu a.rmImageOnly .rmLeftImage, .RadMenu .rmRootGroup a.rmImageOnly {
+    padding: 0;
+    margin: 0;
+    height: 42px;
+    width: 42px;
+}
+
+div.RadMenu .rmGroup .rmText {
+    margin: 0px;
+    padding: 0px;    
+}
+
+.RadMenu .rmSlide
+{
+    top: 40px !important;
+    left: -1px !important;
+}
+
+.menu .rmLeftImage
+{
+    float: right !important ;
+    margin-right: 8px !important;
+    height: 38px;
+    position: relative !important;
+    margin-top: 1% !important;    
+}
+
+.rmSelected
+{
+    width: 364px !important; 
+	background-color: #F2F2EC !important;
+	border-left: 5px solid !important;
+    box-sizing: border-box !important;	
+}
+
+.menu {
+	font-family: 'Font';
+	font-size: 15pt;
+	min-height: 46px;	
+	white-space: normal;
+	min-width: 363px;
+	line-height: 46px;
+}
+
+.rmLink{
+    text-decoration: none;       
+}
+
+.menu:hover{
+	background-color: #F2F2EC;
+}
+
+.bottomMenu {
+	background-color: #ffffff;
+	height: 800px;
+	border-right: 1px solid #6F7376;
+}
+
+.RadMenu .rmVertical .rmLeftImage+.rmText {
+    padding-left: 20px;
+}
+
+.RadMenu .rmSlide .rmVertical .rmLeftImage {
+  top: 0 !important;  
+}
+
+/* Login -----------------------------------------------------------------------------------------------------------------------------*/
+.background{	
+	background-repeat:no-repeat;
+	background-size:cover;
+	position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -1;
+}
+
+.container{
+	margin: 82px 0px 0px 0px;	
+}
+
+.loginBackground{
+	background-color: #70A8BE;
+	background-repeat:no-repeat;
+	background-size:cover;
+	width: 100%;
+	height: 100%;
+	display: table;
+}
+
+.login
+{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.tableLogin
+{
+    background: rgba(255, 255, 255, 0.2); 
+    padding: 25px
+}
+
+
+/* General -----------------------------------------------------------------------------------------------------------------------------*/
+html
+{
+    margin: 0px;
+    padding: 0px;
+    background-color: #FFFFFF;
+}
+body
+{
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+html body form span.MyRadius .riEmpty, html body form span.MyRadius .riEnabled, html body form span.MyRadius .riHover, html body form span.MyRadius .riFocused, html body form span.MyRadius .riError, html body form span.MyRadius .riNegative
+{
+    border-width: 1px;
+    border-radius: 3px; /* 3px */
+    -moz-border-radius: 3px; /* Firefox 3.6 and earlier */
+}
+
+.wtmTableTitle td {
+    font-family: 'Font' !important;
+}
+
+.wtmTableTitle .header {
+    height: 50px;
+}
+
+/* Master ---------------------------------------------------------------------------------------------------------------------------*/
+
+.MasterLoading .rwWindowContent {
+  background: transparent !important;
+}
+
+/* Footer -----------------------------------------------------------------------------------------------------------------------------*/
+.FooterContainer
+{
+    position: relative;    
+}
+
+.FooterTD
+{
+    vertical-align: baseline; 
+    padding-left: 0.5%   
+}
+
+.FeedText
+{
+    font-family: 'Font';
+    font-size: 13pt;
+    color: #FFFFFF;    
+}
+
+.FooterContainerButton
+{
+    background-color: White;
+}
+
+.FooterButton
+{
+    margin-left: 5px;    
+    margin-right: 5px;
+    margin-bottom: 15px;  
+    background-size: cover;     
+}
+
+.FooterSeparator
+{
+    height: 60px; 
+    width: 10px;   
+}
+
+
+.DivTableIn
+{
+    border-top: solid red 0px;
+    border-bottom: solid red 0px;
+    border-left: solid red 0px;
+    border-right: solid red 0px;
+    padding-right: 60px;
+}
+
+/* MyTableForm -----------------------------------------------------------------------------------------------------------------------------*/
+.MyTableForm
+{
+    border: solid #F5F5F5 0px;
+    background-color: #F5F5F5;
+    border-collapse: collapse; /* color: #45484D; */
+    color: #36B4CB;
+    width: 100%;
+}
+
+.MyTableForm td
+{
+    padding: 2px;
+    font-family: Segoe UI !important;
+    font-size: 14px;
+}
+
+.MyTableForm th
+{
+    font-family: Segoe UI !important;
+    font-size: 14px;
+    line-height: 28px !important;
+    height: 28px !important;
+    background-color: #ffffff;
+    text-align: left;
+    text-indent: 0px !important;
+}
+
+.MyTableFormBorder
+{
+    border: solid #C1C1C1 0px;
+    background-color: #F5F5F5;
+    border-collapse: collapse; /* color: #45484D; */
+    color: #36B4CB;
+    width: 100%;
+}
+
+.MyTableFormBorder td
+{
+    padding: 4px;
+    font-family: Segoe UI !important;
+    font-size: 14px;
+}
+
+.MyTableFormBorder th
+{
+    border-bottom: solid #36B4CB 1px;
+    background-color: #F5F5F5;
+    font-family: Segoe UI !important;
+    font-size: 26px;
+    font-style: normal;
+    line-height: 40px !important;
+    height: 40px !important;
+    text-indent: 0px !important;
+    color: #36B4CB;
+    text-align: left;
+    font-weight:lighter;
+}
+
+/* -----------------------------------------------------------------------------------------------------------------------------------*/
+
+.menuLabelLogin{
+	font-family: 'Font';
+	font-size: 15pt;
+}
+
+.menuLabelProcess{
+	font-family: 'Font';
+	font-size: 12pt;
+}
+
+.profileMenu {
+	width: 364px;
+	height: 150px;	
+	position: relative;
+}
+
+.profileText {
+	color: #FFFFFF;
+	padding-left: 10px;
+	word-break: break-all;
+}
+
+.profileImgContainter {
+	background-repeat:no-repeat;	
+	margin-left: 10px;
+    border: 1px solid white;
+    height: 110px;
+    width: 110px;
+    border-radius: 110px;
+    -webkit-border-radius: 110px;
+	-moz-border-radius: 110px;
+}
+
+.profileImg {
+    width: 100px;
+	height: 100px;
+	border-radius: 50px;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	margin: 5px;
+}
+
+
+.arrow-selected a {
+    font-family: 'Font';
+	display: block;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	position: relative;
+	padding-left: 25px;
+	padding-right: 15px;
+	font-size: 13px;
+	text-decoration: none;
+	color: #FFFFFF;	
+	margin-left: 3px;
+	white-space: nowrap;
+}
+
+.arrow  a {
+	font-family: 'Font';
+	display: block;
+	height: 40px;
+	line-height: 40px;
+	background: #EDEDE3;
+	text-align: center;
+	position: relative;
+	padding-left: 25px;
+	padding-right: 15px;
+	font-size: 13px;
+	text-decoration: none;
+	color: #92846C;	
+	margin-left: 3px;
+	white-space: nowrap;
+}
+
+.arrow  a:after{
+	content: "";  
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+	border-left: 15px solid #EDEDE3;
+	position: absolute; right: -15px; top: 0;
+	z-index: 1;	
+}
+
+.arrow-selected  a:after {
+	content: "";  
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+	position: absolute; right: -15px; top: 0;
+	z-index: 1;	
+}
+
+.arrow  a:before, .arrow-selected  a:before {
+	content: "";  
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+	border-left: 15px solid #ffffff;
+	position: absolute; left: 0; top: 0;
+}
+
+.arrow  a:hover, .arrow-selected a:hover{
+	color: #FFFFFF;	
+}
+
+.containerBarMenu
+{
+    background-color: White; 
+    height: 40px   
+}
+
+.containerBarMenuTitle
+{
+    white-space: nowrap;
+    padding-right: 10px;
+}
+
+.containerTableMenu
+{
+    overflow:hidden; 
+    margin: auto; 
+    position: relative;  
+    float: right;  
+}
+
+.barMenuTitle
+{
+    font-family: 'Font';
+    font-size: 14px;
+    line-height: 40px;
+}
+
+.barMenuImage
+{
+    vertical-align: middle;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;  
+}
+.windowContainer{
+	width: 100%; 
+	height: 100%; 	
+}
+
+.windowTitleBar{
+    height: 54px; 
+    line-height: 54px;
+    font-size: 18pt;
+    font-family: 'Font';
+    color: #FFFFFF;
+}
+
+.windowTitleBarText{
+    font-size: 16pt;
+    font-family: 'Font';
+    color: #FFFFFF;
+    padding-left: 2%;
+}
+
+.windowLeftCol{
+    float: left; 
+    width: 29%; 
+    height: 330px; 
+    background-color: #FFFFFF;  
+    font-size: 12pt;     
+}
+
+.windowRightCol
+{
+    font-family: 'Font';
+    width: 71%;
+    height: 330px;   
+    left: 200px;
+    position: absolute;    
+    background-color: #F5F5F5;
+    overflow: auto;
+}
+
+.processTab .rtsIn, .processTab .rtsTxt
+{
+    text-align: left !important;
+    font-family: 'Font';  
+    color: Black !important;  
+    padding: 0px !important;
+}
+
+.processTab .rtsLink:hover {
+	background-color: rgb(242, 242, 236) !important;
+}
+
+.processTab .rtsSelected {
+    border-left: 5px solid !important;	
+	background-color: rgb(242, 242, 236) !important;
+	border-bottom : 0px !important;
+	padding: 0px !important;
+	color: Black !important;
+}
+
+.processTab .rtsImg
+{
+    height: 40;
+    width: 40;
+    padding: 5px;
+}
+
+.RadTabStrip, .RadTabStripVertical {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+.processTab .rtsLI
+{
+    border-bottom: 1px solid #6F7376 !important;
+    padding: 5px;
+}
+
+.processTab .rtsLevel
+{
+    background-color: White !important;
+}
+
+html body .RadInput input.riTextBox {
+    border: none;
+    outline: none;
+}
+
+html body .RadInput input.riEmpty{
+    font-family: 'Font';
+    color: Black;
+    font-style: normal !important;
+    font-size: 12pt; 
+}
+
+.dialogContainer
+{
+    font-family: 'Font'; 
+    color: #FFFFFF;
+    min-width: 300px;
+}
+
+tr.dialogTitleRow > td
+{
+    white-space: nowrap;
+    padding: 7px 10px 7px 10px;
+    font-size: 18pt;
+}
+
+tr.dialogTextRow > td
+{
+    white-space: nowrap;
+    padding: 7px 15px 14px 15px;    
+    font-size: 15pt;
+}
+
+.aboutTitle
+{
+    font-family: 'Font';
+    color: White;
+    font-size: 18pt;
+    padding: 10px 5px 10px 5px;
+}
+
+.aboutTitleCell
+{
+    padding-left: 15px;   
+}
+
+.aboutAppName
+{
+    font-family: 'Font';
+    font-size: 23pt;
+    font-weight: bold;
+}
+
+.aboutInfoTableContainer
+{
+    margin-left: 30%; 
+    margin-right: 30%; 
+    border: 1px solid black; 
+    border-top-right-radius: 10px;
+    -moz-border-radius-top-right: 10px;
+    -webkit-border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    -moz-border-radius-bottom-right: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    -moz-border-radius-bottom-left: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    -moz-border-radius-top-left: 10px;
+    -webkit-border-top-left-radius: 10px; 
+}
+
+.aboutInfoTable
+{
+    text-align: left; 
+    font-size: 13pt; 
+    font-family: 'Font'; 
+    padding: 5px   
+}
+
+.aboutInfoTableRow
+{
+    color: #888888;   
+}
+
+.feedMessagePopup
+{
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+    position: relative;	
+}
+
+.feedMessagePopupTitleBar{
+    height: 50%; 
+    width: 100%; 
+    position: absolute;
+    font-family: 'Font';    
+}
+
+.feedMessagePopupTextContainer{
+    height: 50%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;    
+}
+
+.feedMessagePopupText{
+    font-family: 'Font';
+    color: Black;
+    padding-left: 1%;
+    padding-top: 1%;    
+}
+
+table.process
+{
+    border-spacing: 0px;
+}
+
+.process td {
+    border-bottom: 1px solid #DCDCDC;
+    height: 41px;
+    font-weight: bold;    
+}
+
+.feedSeparator
+{
+    background-color: #FFFFFF;    
+    width: 2px;    
+}
+
+.backgroundWhite
+{
+    background-color: White;    
+}
+
+.taskTitle
+{
+    text-align: center; 
+    font-size: 21pt; 
+    padding: 3%; 
+    color: White; 
+    font-family: 'Font';
+    text-overflow: ellipsis;
+    width: 500px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.RadScheduler_Silk .rsNonWorkHour, .rsSatCol, .rsSunCol
+{
+    background-color: #FFFFFF !important;   
+}
+
+.RadScheduler_Silk .rsSelectedSlot {
+    background: #FFFFFF !important;   
+}
+
+.RadScheduler_Silk .rsHeader
+{
+    background-color: #477F59 !important;
+    background-image: none !important;
+    color: White !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0px !important;
+    text-align: center;
+}
+
+.RadScheduler_Silk .rsToday
+{
+    display: none !important;
+}
+
+.rdLeft, .rdCenter, .rdRight
+{
+    background-image: none !important;
+}
+
+.rdLeft, .rdBottom, .rdRight
+{
+     display: none !important;
+}
+
+.RadScheduler_Silk .rsMonthView .rsDateBox {
+    border-bottom: none !important;
+    background-color: White !important;
+    text-align: right;    
+}
+
+.RadScheduler_Silk .rsMonthView .rsOtherMonth .rsDateBox, .RadScheduler_Silk .rsMonthView .rsOtherMonth
+{  
+    background-color: #EDEDE3 !important;
+}
+
+.RadScheduler_Silk .rsHorizontalHeaderTable th {
+    font-weight: normal;
+    color: white !important;
+    border: none !important;
+    background-image: none !important;
+    padding: 0px !important;
+}
+
+.RadScheduler_Silk .rsContent {
+    border: none! important;
+}
+
+.RadScheduler_Silk {
+    color: Black !important;
+    font-family: 'Font' !important;
+}
+
+.RadScheduler_Silk .rsMonthView .rsTodayCell .rsDateBox, .RadScheduler_Silk .rsMonthView .rsTodayCell{
+    background-color: #E2F6E1 !important;    
+}
+
+.RadScheduler_Silk .rsHeader .rsNextDay
+{
+    background-size: cover !important;
+    background-position: 0 !important;
+}
+
+.RadScheduler_Silk .rsHeader .rsPrevDay
+{
+    background-size: cover !important;
+    background-position: 0 !important;
+}
+
+.RadScheduler .rsAptSimple .rsAptContent {
+    margin: 0px !important;
+    text-align: center !important;
+}
+
+.rdContent
+{
+    overflow: hidden !important;
+}
+
+.filterContainer
+{
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+	background-color: #FFF;
+}
+
+.filterTitle{
+    width: 100%;     
+    height: 55px;
+}
+
+.filterTable
+{
+    height: 100%; 
+    color: white; 
+    font-size: 18pt;
+    font-family: 'Font';
+}
+
+.appointmentTab .rtsTxt
+{
+    color: White !important;
+    font-family: 'Font';
+    font-size: 12pt;    
+    padding: 10px !important;
+}
+
+.appointmentTab .rtsSelected
+{
+   border-left: 0px;      
+   border-bottom: 8px solid black;
+   background-color: transparent !important;
+}
+
+.appointmentTab .rtsLI
+{
+    border-bottom: 0px;       
+}
+
+.appointmentTab .rtsSelected, .appointmentTab  .rtsSelected .rtsTxt, .appointmentTab  .rtsLink:hover
+{    
+   background-color: transparent !important;
+   color: White;
+}
+
+
+.appointmentDefault
+{
+    overflow-y: hidden;
+    height: 360px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.appointmentDefault:hover
+{
+    overflow-y:auto;
+    padding-right: 0px;
+}
+
+.appointmentDefaultButtons
+{
+    padding-top: 10px;
+    padding-right: 10px;    
+    padding-left: 10px;
+}
+
+.appointmentTab
+{
+    overflow-y: hidden;
+    height: 310px;
+    padding: 10px 10px 0px 10px;    
+}
+
+.appointmentTabRollBar
+{
+    overflow-y: hidden;
+    height: 310px;
+    padding: 10px 10px 0px 10px;    
+}
+
+.appointmentTabRollBar:hover
+{
+    overflow-y:auto;
+    padding-right: 0px;
+}
+
+.appointmentTabButtons
+{
+    padding: 0px 10px 5px 10px;    
+}
+
+.ctxMenuAppointment
+{
+    font-family: 'Font' !important;
+    font-size: 10pt !important;     
+}
+
+.ctxMenuAppointment .rmItem
+{
+    background-color: white !important;
+    padding: 5px 10px 5px 10px !important;    
+}
+
+.ctxMenuAppointment .rmText
+{
+    color: Black !important;
+}
+
+.tableUpperMenu
+{
+    background-color: White;
+    height: 40px;    
+}
+
+.RadNotification .rnContent {
+    font-size: 14pt;
+    padding: 20px !important;
+    text-align: center;
+}
+
+.formToolBar .rtsTxt
+{
+    font-family: 'Font';
+    font-size: 14px;
+    padding: 8px !important;
+    text-transform: uppercase;
+}
+
+.formToolBar .rtsFirst
+{
+    border-left: 0px !important;
+}
+
+.formToolBar .rtsLI .rtsSelected
+{    
+    border-bottom: 2px solid;
+    margin-top: -2px;
+}
+
+.hideDivTreeList {
+    position: absolute;
+    right: -700px;
+    width: 700px;
+    height: 100%;
+    background-color: White;
+    color: #333;
+    z-index: 10;
+    font-family: 'Font';
+    overflow: hidden;  
+    border-left: 1px solid #6F7376;
+}
+
+.hideDiv {
+    position: absolute;
+    right: -450px;
+    width: 450px;
+    height: 100%;
+    background-color: White;
+    color: #333;
+    z-index: 10;
+    font-family: 'Font';
+    overflow: hidden;  
+    border-left: 1px solid #6F7376;
+}
+
+.hideDiv:hover, .hideDivTreeList:hover
+{
+    overflow-y:auto;
+    overflow-x:auto;
+}
+
+.hideDivTitle{
+	height: 42px;
+	width: 100%;
+	border-left: 16px solid;
+	color: White;
+	line-height: 42px;	
+	font-family: 'Font';
+	font-size: 20pt;
+    font-weight: bold;   
+    vertical-align: top;
+    margin-bottom: 5px;
+    cursor: pointer; 
+    cursor: hand;
+}
+
+.KPIOuterDiv
+{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    font-family: 'Font';
+    margin-bottom: 5px;
+    padding: 10px 0px 10px 0px;  
+}
+
+.KPISimpleGroupContainer 
+{
+   border-style: solid;
+   -webkit-border-radius: 10px;   
+   overflow: hidden;
+   text-align: center;
+   font-weight: bold;
+   width: 40%;
+   position: relative;
+   float: left;
+   z-index: 1;
+}
+
+.KPICircleGroupContainer 
+{
+    font-family: sans-serif;
+    position: relative;
+    border-style: solid;
+    width: 40%;     
+}
+
+.KPIGroupContainer 
+{
+   overflow: hidden;
+   text-align: center;
+   position: relative;
+   float: left;
+   width: 100%;
+   font-weight: bold;
+}
+
+.KPIGroupItem
+{
+	position: relative;
+	float: left;
+	padding:5px;
+    border-style:solid;	
+    margin-right: 5px;
+    width: 94%;
+}
+
+.KPIOuter
+{
+   border-style: solid;
+   overflow: hidden;
+   width: 100%;   
+   font-family: 'Font';
+   margin-bottom: 5px;
+   padding: 10px 0px 10px 0px;
+}
+
+.KPISimpleGroupItem 
+{
+    position:absolute;
+    padding: 10px;
+    border-style:solid;
+    -webkit-border-top-right-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px; 
+	border-top-right-radius: 10px;      	
+	border-bottom-right-radius: 10px;
+	height: 40%;
+	margin: auto;
+    top: 50%;
+    bottom: 50%;
+    z-index: 0;
+    left: 10px;
+    display: table;
+}
+
+.importTitle
+{
+    font-family: 'Font';
+    color: White;
+    font-size: 18pt;
+    padding: 10px 5px 10px 5px;    
+}
+
+.importTitleCell
+{
+    padding-left: 15px;   
+}
+
+.importTable
+{
+    font-family: 'Font';
+    color: #92846C;
+    padding: 10px;
+}
+
+.planogramPhotoTitle
+{
+    font-family: 'Font';
+    color: White;
+    font-size: 18pt;
+    padding: 10px 5px 10px 5px;    
+}
+
+.planogramPhotoTitleCell
+{
+    padding-left: 15px;   
+}
+
+.planogramPhotoTable
+{
+    font-family: 'Font';
+    color: #92846C;
+    padding: 10px;
+}
+
+
+/* FORMS */
+
+.Forms_MainDiv
+{
+    background-color: White;
+}
+
+.Forms_Link
+{
+    color: #36B4CB !important;
+    text-decoration:none !important; 
+}
+
+.Forms_HelpMenu{
+    float: left; 
+    background-color: #FFFFFF;  
+    font-size: 12pt;  
+    font-family: 'Font';
+}
+
+.Forms_HelpInfo{
+    background-color: #FFFFFF;  
+    font-size: 12pt;  
+    font-family: 'Font';
+}
+
+.Forms_HelpMessage{
+    font-size: 12pt;  
+    font-family: 'Font';
+    padding-left:10px;
+    padding-right:10px;
+    background-color: #F3F3F3;
+}
+
+.Forms_DetailDescription
+{
+    font-family: 'Font';
+font-size: 11pt;
+   /* color: rgba(108,114,118,255);*/
+}
+
+
+.Forms_DetailTitle
+{
+    font-family: 'Font';
+   
+   font-weight: bold;  
+    font-size: 11pt;
+   /* color: rgba(108,114,118,255);*/
+}
+
+.Forms_Help_processTab .rtsIn, .Forms_Help_processTab .rtsTxt
+{
+    text-align: left !important;
+    font-family: 'Font';  
+    color: Black !important;  
+    /*padding: 0px !important;*/
+    white-space:normal !important;
+  
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+.Forms_Help_processTab .rtsLink:hover {
+	background-color: rgb(242, 242, 236) !important;
+}
+
+.Forms_Help_processTab .rtsSelected {
+    border-left: 5px solid !important;	
+	background-color: rgb(242, 242, 236) !important;
+	border-bottom : 0px !important;
+	/*padding: 0px !important;*/
+	color: Black !important;
+}
+
+.Forms_Help_processTab .rtsLI
+{
+    border-bottom: 1px solid #6F7376 !important;
+    padding: 5px;
+}
+
+.Forms_Help_processTab .rtsLevel
+{
+    background-color: White !important;
+}
+
+
+
+/* ERROR PAGE */
+
+.ErrorPage_Container
+{
+    font-family: 'Font'; 
+    color: #FFFFFF; 
+    background-color: #F5F5F5; 
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+
+tr.ErrorPage_TitleRow > td
+{
+    padding: 7px 20px 7px 20px;
+    font-size: 18pt;
+    color: #000000;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.ErrorPage_TextRow > td
+{
+
+    padding: 7px 20px 7px 20px;
+    font-size: 14pt;
+    color: #000000;
+
+   -ms-word-break: break-all !important;
+    word-break: break-all !important;
+
+ /* Non standard for webkit */
+     word-break: break-word !important;
+
+    -webkit-hyphens: auto;
+       -moz-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+}
+
+
+.ErrorPage_DetailTitle
+{
+    padding: 7px 20px 7px 20px;
+    font-family: 'Font'; 
+    font-size: 10pt;
+    font-weight: bold;
+    color: #000000;  
+    vertical-align: top;
+}
+
+.ErrorPage_DetailDescription
+{
+    padding: 7px 20px 7px 20px;
+    font-family: 'Font'; 
+    font-size: 10pt;
+    color: #000000;  
+
+  -ms-word-break: break-all !important;
+    word-break: break-all !important;
+
+ /* Non standard for webkit */
+     word-break: break-word !important;
+
+    -webkit-hyphens: auto;
+       -moz-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+}
+
+.ErrorPage_RedirectLink
+{
+    color: #000000;
+    text-decoration:underline;  
+}
+
+
+/* LOGIN */
+
+.Login_dialogContainer
+{
+    font-family: 'Font'; 
+    color: #FFFFFF;
+    min-width: 300px;
+    
+    background-color: #ED6760;
+}
+
+tr.Login_dialogTextRow > td
+{
+    white-space: nowrap;
+    padding: 14px 15px 14px 7px;    
+    font-size: 15pt;
+    color: #FFFFFF;
+}
+
+.rtlHeader
+{
+    /*display:none;*/
+}
+
+.divKPIExpression
+{
+    border: 1px solid black; 
+    height: 225px; 
+    padding: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.LabelClass
+{
+    font-family:'Font';
+    color:#36B4CB;
+    font-size:14px;    
+}
+
+.trackingFilterBox
+{
+    z-index: 90;
+	position: absolute;
+	left: 15px;
+	top: 53px;
+	width: 250px;
+	height: 390px;
+	background: White;
+	color: Black;
+	opacity: 0.8;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+}
+
+.trackingDirectionPanel
+{
+    z-index: 90;
+	position: absolute;
+	right: 25px;
+	top: 150px;
+	bottom: 5px;
+	width: 300px;
+	height: 355px;
+	background: White;
+	color: Black;
+	opacity: 0.9;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 2px;
+}
+
+.trackingSearchAddressDiv
+{
+    font-family:'Font';
+    position: absolute; 
+    right: 25px; 
+    top: 5px; 
+    width: 300px;
+    z-index: 999;
+    background-color: white;
+	opacity: 0.9;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 2px;
+}
+
+.trackingPaginationDiv
+{
+    background-color: white;
+    text-align: center;
+    height: 40px;
+    padding: 2px;
+    font-family: 'Font';
+    font-size: 10pt;
+    
+    display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
+
+	align-items: center;
+}
+
+.checkBoxList input[type=checkbox]
+{
+    display: none;
+}
+
+.mapInfobox {
+    border:2px solid black;
+    margin-top: 8px;
+    background:#333;
+    color:#FFF;
+    font-family:'Font';
+    font-size:12px;
+    padding: .5em 1em;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    text-shadow:0 -1px #000000;
+    -webkit-box-shadow: 0 0  8px #000;
+    box-shadow: 0 0 8px #000;
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+}
+
+
+/*Form Template Import*/
+
+.RadUploadProgressAreaHidden {
+/*visibility: visible !important;*/
+}
+
+.RadUploadProgressArea .ruShadow .ruProgress 
+{
+    box-shadow: none !important;
+}
+
+.RadUploadProgressArea_Silk .ruProgress 
+{
+    border-color: #FFFFFF !important;
+    color: #3b3b3b !important;
+    background-color: #fff !important;
+    text-align: center;
+    font-family: 'Font';
+    font-size: 13px;
+}
+
+.RadUploadProgressArea_Silk .ruActions 
+{
+    border-color: #ffffff !important;
+    background-color: #ffffff !important;
+}
+
+.RadUploadProgressArea .ruFilePortion 
+{
+    margin: auto !important;
+    height:100px;
+}
+
+.RadUploadProgressArea .ruFileCount 
+{
+    margin: auto !important;
+    height: 110px;
+}
+
+.RadUploadProgressArea_Silk .ruProgressHeader 
+{
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+    background: none !important;
+}
+
+.RadUpload .ruBrowse {
+    width: 190px !important;
+}
+
+.RadUpload {
+    text-align: center !important;
+}
+
+div.uploadPlanogramPhoto .ruButton
+{
+    background-image: none;    
+}
+
+/*Form Template Import*/
+
+
+.btnLogin .rbDecorated 
+{
+    border:none !important;
+    font-family: 'Font' !important;
+    font-size: 13pt;  
+    background-color: #E7EBDF !important;
+    color: #000000;
+}
+
+.btnConfirmWindow .rbDecorated 
+{
+    padding:0px !important;
+    color: white;
+    font-family: 'Font';
+    border: solid white 1px !important;
+    border-top-right-radius:3px;
+    border-top-left-radius:3px;
+    border-bottom-right-radius:3px;
+    border-bottom-left-radius:3px;
+    font-size: 15pt;  
+}
+
+
+.btnDefault .rbDecorated
+{
+    font-family: 'Font' !important;
+    font-size: 13pt;
+    border: 1px solid black !important;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 5px;  
+}
+
+.btnLink .rbDecorated
+{
+    font-family: 'Font' !important;
+    font-size: 13pt;
+    border: none;
+    text-align: left !important;
+    text-decoration: underline;
+}
+
+.btnLinkHover .rbDecorated
+{
+    font-family: 'Font' !important;
+    font-size: 13pt;
+    border: none;
+    text-align: left !important;    
+}
+
+.btnLinkHover:hover
+{
+    text-decoration: underline;
+}
+
+.btnLinkHoverBold .rbDecorated
+{
+    font-family: 'Font' !important;
+    font-size: 15pt;
+    border: none;
+    text-align: left !important;
+    font-weight: bold;
+}
+
+.btnLinkHoverBold:hover
+{
+    text-decoration: underline;
+}
+
+.autocompleteHierarchy td.rcbArrowCell a
+{
+    display: none !important;
+}
+
+.bottomDiv {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.surveyTable
+{
+    font-family: 'Font' !important; 
+}
+
+.surveyDockComponentsOuter
+{
+    text-align: center;
+    font-family: 'Font' !important; 
+    font-size: 14px;
+}
+
+.surveyDockComponents
+{
+    display: inline-block;
+    height: 73px;
+    width: 73px;
+	cursor: move;
+    background-color: #BABCCB;
+    border-radius: 73px;
+    -webkit-border-radius: 73px;
+	-moz-border-radius: 73px;
+	padding: 2px;
+}
+
+.surveyGroupCombo td.rcbArrowCell a, .surveyGroupCombo td.rcbArrowCell a:hover
+{
+    background-image: url('../Image/ic_survey_combo_arrow.png');
+}
+
+.surveyGroupCombo .rcbReadOnly .rcbInputs, .surveyGroupCombo .rcbReadOnly .rcbInput
+{
+    font-family: 'Font' !important; 
+    text-decoration: underline;
+    font-size: 13pt;
+}
+
+.dockDisabledBorders .rdTable .rdTop,
+.dockDisabledBorders .rdTable tr.rdTop td.rdCenter
+{
+    visibility: hidden !important;    
+}
+
+.surveyDockQuestionText
+{
+   padding: 15px;
+   font-size: 18px;
+   border-left: 1px solid #BABCCB;
+   border-bottom: 1px solid #BABCCB;
+}
+
+.surveyIconQuestion
+{
+    border-radius: 30px;
+    background-color: #BABCCB;    
+}
+
+.surveyDockQuestionNumber
+{
+    border-bottom: 1px solid #BABCCB;
+}
+
+.surveyQuestionsTable
+{   
+    font-family: 'Font' !important; 
+    font-size: 12pt;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.surveyNavigationTableHeader
+{
+    width: 100%;
+    padding-bottom:12px;
+    padding-top:12px;
+    padding-left: 5px;
+    border-right:1px solid #DBDBDB;
+    border-bottom: 1px solid #fff;    
+}
+
+.surveyNavigationHeaderInput
+{
+    width: 100%;
+    font-family: 'Font'; 
+    font-size: 16px;
+    color: White;
+    text-transform: uppercase;
+    text-overflow: ellipsis;
+    width: 100%;
+    border: none;
+}
+
+.surveyNavigationTableCell
+{
+    padding-bottom:12px;
+    padding-top:12px;
+    padding-left: 5px;
+    border-right:1px solid #DBDBDB;
+    border-bottom: 1px solid #DBDBDB;
+}
+
+.surveyNavigationCellInput
+{
+    width: 100%;
+    background-color: White;
+    font-family: 'Font'; 
+    font-size: 16px;
+    border: none;
+    text-overflow: ellipsis;
+}
+
+div.k-diagram text
+{
+    font-family: 'Font' !important; 
+}
+
+.surveyShapeBox
+{
+    position: absolute; 
+    top: 10; 
+    right: 10; 
+    border: 1px solid black; 
+    padding: 10px; 
+    background-color: White;
+    text-align: center;
+}
+
+.cursorGrab
+{
+    cursor: move; 
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+.cursorGrab:active
+{
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+.surveyTableMatrix
+{
+    width: 950px; 
+    height: 340px; 
+    float: left; 
+    padding: 15px; 
+    font-family: 'Font';
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.surveyMatrixToolbar
+{
+    width: 120px; 
+    height: 340px; 
+    float: right; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    padding: 15px
+}
+
+.rotate {
+  /* FF3.5+ */
+  -moz-transform: rotate(90.0deg);
+  /* Opera 10.5 */
+  -o-transform: rotate(90.0deg);
+  /* Saf3.1+, Chrome */
+  -webkit-transform: rotate(90.0deg);
+  /* IE6,IE7 */
+  filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=0.083);
+  /* IE8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)";
+  /* Standard */
+  transform: rotate(90.0deg);
+  transform-origin: left bottom 0;
+  margin-top: -30px;  
+}
+
+.dockSimpleBorder
+{
+    border-right: 1px solid black;
+    margin-right: 4px;
+    margin-left: 3px;
+}
+
+.btnLinkMatrix .rbDecorated
+{
+    font-family: 'Font' !important;
+    font-size: 13pt;
+    border: none;
+    text-align: left !important;
+    text-decoration: underline;
+    width: 265px;
+}
+
+.hideHeaderChkBox input[type=checkbox]
+{
+    display: none;
+}
+
+#outerView #innerView {
+	width: 880px;
+	height: 370px;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	overflow: hidden;
+}
+
+#outerView #innerView .slide {
+	margin: 0;
+	padding: 0;
+	width: 880px; 
+	height: 370px;
+	float: left;
+	position: relative;
+}
+
+.surveyViewGroupTitle
+{
+    padding: 5px;
+    text-align: center; 
+    font-family: 'Font' !important;
+    font-size: 14pt;
+    font-weight: bold;  
+}
+
+.surveyViewGroupBody
+{
+    padding: 5px;
+    text-align: center; 
+    overflow-y: auto; 
+    height: 320px;
+    font-family: 'Font' !important;
+}
+
+.surveyHighlightZone
+{
+    background-color: #BABCCB !important;
+}
+
+.surveyViewFooter
+{
+    width: 100%; 
+    text-align: center; 
+    height: 50px;
+    font-family: 'Font' !important;
+    font-size: 13pt;    
+}
+
+.dashboardConfigDiv
+{
+    overflow: auto; 
+    font-family: 'Font' !important;    
+}
+
+.dashboardConfigSection
+{
+    float: left; 
+    width: 50%; 
+    height: 450px
+}
+
+.dashboardConfigBox
+{
+    margin: 5px; 
+    box-shadow: 0px 1px 2px 0px #acaeaf
+}
+
+.dashboardConfigBoxHeader
+{
+    background: #eeeeee; 
+    height: 38px; 
+    line-height:38px; 
+    padding: 5px; 
+    border-bottom: solid 1px #e0e0e0;
+}
+
+.dashboardGraphTypeLeftCol
+{
+   background-color: #fff; 
+   float: left; 
+   width: 29%;
+   height: 385px; 
+   font-size: 12pt; 
+}
+
+.dashboardGraphTypeRightCol
+{
+    background-color: #fff;
+    float: right; 
+    width: 71%   
+}
+
+.data-cell
+{
+    width: 100%;
+    margin: 0px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+
+.data-category .data-category-values
+{
+    padding: 10px;
+}
+
+.graphTypeTab .rtsIn, .graphTypeTab .rtsTxt
+{
+    text-align: left !important;
+    font-family: 'Font';  
+    color: Black !important;  
+    padding: 0px !important;
+}
+
+.graphTypeTab .rtsLink:hover {
+	background-color: white !important;
+}
+
+.graphTypeTab .rtsSelected {
+    border-left: 5px solid !important;	
+	background-color: white !important;
+	border-bottom : 0px !important;
+	padding: 0px !important;
+	color: Black !important;	
+}
+
+.graphTypeTab .rtsImg
+{
+    height: 40;
+    width: 40;
+    padding: 5px;
+}
+
+.graphTypeTab .rtsLI
+{
+    border-bottom: 1px solid #6F7376 !important;
+    padding: 5px;
+}
+
+.graphTypeTab .rtsLevel
+{
+    background-color: #eeeeee !important;
+}
+
+.graphAppearanceTab .rtsTxt
+{
+    color: black !important;
+    font-family: 'Font';
+    font-size: 12pt;    
+    padding: 10px !important;
+}
+
+
+.graphAppearanceTab .rtsSelected, .graphAppearanceTab  .rtsSelected .rtsTxt, .graphAppearanceTab .rtsLink:hover
+{    
+   background-color: white !important;
+   color: black;
+}
+
+.graphAppearanceTab .rtsLevel
+{
+    background-color: #eeeeee !important;
+}
+
+table.graphTypesBtn td {
+    cursor: pointer;
+}
+
+table.graphTypesBtn td:hover
+{
+    opacity: 0.6;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";	
+}
+
+
+.dashboardPagePreview {
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: auto;
+	width: 100%;
+	background-color: #eee;
+	border: 1px solid #999;
+	margin-top: 10px;
+}
+			
+.graphsBoxGroup{
+	border: 1px solid #999;
+	background-color: #fff;
+	width: 100%;
+	overflow-y:hidden; 
+	overflow-x:hidden;
+	height: 50px;
+}
+			
+.graphsBoxGroupInner {
+	height: 100%;
+	background-color: #fff;
+	color: #333;
+	z-index: 99;
+	padding: 2px;		
+}
+			
+.dashboardSectionContainer{
+	width: 320px;
+	height: 300px;
+	float: left;
+	display: block;
+}
+
+.dashboardConfigBox{
+	margin: 5px; 
+	box-shadow: 0px 1px 2px 0px #acaeaf;
+}
+
+.dashboardConfigBoxHeader{
+	background: #eeeeee; 
+	height: 38px; 
+	line-height:38px; 
+	padding: 5px; 
+	border-bottom: solid 1px #e0e0e0;
+}
+			
+.dashboardDragOver {
+	border: 2px dashed #000;
+}
+			
+.graphInBoxDiv{
+	width:200px; 
+	height: 30px; 
+	padding: 3px; 
+	overflow: hidden; 
+	white-space: nowrap; 
+	text-overflow: ellipsis; 
+	border: 3px solid #bebebe; 
+	background-color: #eeeeee;
+	margin: 2px;
+	float: left;
+}
+
+.dashboardTemplateMessageDiv
+{
+    height: 50px; 
+    line-height: 50px; 
+    padding-left: 5px;
+}
+			
+.dropZone{
+	width: 49%; 
+	height: 355px; 
+	float: left
+}
+			
+[draggable] {
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	/* Required to make elements draggable in old WebKit */
+	-khtml-user-drag: element;
+	-webkit-user-drag: element;
+}
+
+.btnTrackingSendFeed {
+    -webkit-border-radius: 5;
+    -moz-border-radius: 5;
+    border-radius: 5px;
+    color: #000000;
+    font-size: 12px;
+    background: #ffffff;
+    padding: 5px 5px 5px 5px;
+    border: solid #bdbdbd 2px;
+    text-decoration: none;
+}
+
+.trackingIconLabel
+{
+    color: red;
+    background-color: white;
+    font-family: "Font";
+    font-size: 10pt;
+    font-weight: bold;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    -webkit-border-radius: 15;
+    -moz-border-radius: 15;
+    border-radius: 15px;
+    border: 1px solid black;
+    white-space: nowrap;
+}
+
+
+/* ---------------------------------------------------------------------------------------------------- */
+/* MixProductGroup */
+
+.mixTable td {
+    font-family: 'Font' !important;
+    text-align: center;
+    vertical-align:middle
+}
+
+.mixTable .header {
+    height: 50px;
+}
+
+.loginControls .LabelClass
+{
+    color: #fff;
+}

@@ -1,0 +1,272 @@
+
+<html>
+	<head>
+		<title>Cliente 360</title>
+        <meta http-equiv='X-UA-Compatible' content='IE=Edge'/>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>	
+		
+		<link href="./Style/style_gerdau.css" rel="stylesheet" type="text/css" />
+		<link href="./Style/dash.css" rel="stylesheet" type="text/css" />				
+		<script src="./js/amcharts.js" type="text/javascript"></script>
+		<script src="./js/pie.js" type="text/javascript"></script>
+		<script src="./js/serial.js" type="text/javascript"></script>
+		<script src="./js/MC1Lib.js" type="text/javascript"></script>
+		<script src="./js/gauge.js" type="text/javascript"></script>
+		<script src="./js/funnel.js" type="text/javascript"></script>
+		
+		<style> 
+
+			.widget .widget_title_2
+				{
+					
+					height: 38px;
+					border-bottom: solid 1px #e0e0e0;
+					border-radius: 3px 3px 0px 0px;
+					background: #191970;
+				}
+
+			.widget .widget_title_2 span
+				{
+    
+					background-position-y: bottom;
+					
+					font-size: 16px;
+					float: left;
+					padding: 10px 0px 0px 10px;
+					
+					-webkit-text-shadow: 0px 1px 0px #fff;
+					color: #FFFFFF;
+					text-align: center;	
+				}
+			.widget .widget_legend
+				{
+					display: flex;
+					border-bottom: solid 1px #e0e0e0;
+					border-radius: 0px 0px 3px 3px;
+					background: #191970;
+				}
+			.widget .widget_legend span
+				{
+						
+					background-position-y: bottom;
+					
+					font-size: 12px;
+					float: left;
+					padding: 10px;
+					
+					-webkit-text-shadow: 0px 1px 0px #fff;
+					color: #191970;
+					text-align: center;	
+				}
+				
+			
+				table.widget td{
+					min-width: 10px
+				}
+				
+				
+		</style>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$("a.planejamento_btn:eq(1)").attr("style","color:#fff !important").css("background","#939FA2").css("text-decoration","none");
+				
+			$("a").click(function(){
+			
+			$("a."+$(this).attr("class").split(' ')[1]).attr("style","color: #867F79 !important").css("background","EBEBEB");
+			$(this).attr("style","color:#fff !important").css("background","#939FA2").css("text-decoration","none");
+			});
+		});
+		
+		$(document).ready(function(){
+				// Recebe o cIDCustomer da sessão
+				$cIDCustomer = "1";
+				
+				if($cIDCustomer == ""){
+					// Esconde todos os elementos que contem a classe 'container_data'
+					$(".container_data").hide();
+					
+					// Apresenta todos os elementos que contem a classe 'container_customer'
+					$(".container_customer").show();
+				}else{
+					$(".container_customer").hide();
+					$(".container_data").show();
+				}
+			});	
+	
+	function loadPage()
+	{
+		
+		loadCarteiraCliente(1);
+		
+			var inadimplencia = new Array({"nvalidate": "De 1 a 5 dias","nquantidade": "0"},{"nvalidate": "De 6 a 10 dias","nquantidade": "0"},{"nvalidate": "A partir de 11 dias","nquantidade": "164"});			
+			AmCharts.makeChart("div_inadimplencia", 
+				{
+					"type": "pie",
+					"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+					"innerRadius": "60%",
+					"colors": ["#008000","#FFFF00","#FF0000","#F8FF01","#B0DE09","#04D215","#0D8ECF","#0D52D1","#2A0CD0","#8A0CCF","#CD0D74","#754DEB","#DDDDDD","#999999","#333333","#000000","#57032A","#CA9726","#990000","#4B0C25"],
+					"titleField": "nvalidate",
+					"valueField": "nquantidade",
+					"allLabels": [],
+					"balloon": {},
+					"panEventsEnabled": false,
+					"legend": {
+						"enabled": true,
+						"align": "center",
+						"markerType": "circle",
+						"switchType": "v"
+					},
+					"titles": [],
+					"dataProvider": inadimplencia
+				}
+			);
+	};
+
+	function loadCarteiraCliente(type)
+	{
+		var varCarteiraCliente = null;
+	
+		if(type==0)
+		{
+			varCarteiraCliente = [{"xsector": "Vergalhão","ntonelada": "9270.00000"}];
+
+			if(varCarteiraCliente == "")
+			{
+				
+				varCarteiraCliente = [{"xsector": "","ntonelada": ""}];
+				
+			}
+
+			else 
+			{
+				varCarteiraCliente = [{"xsector": "Vergalhão","ntonelada": "9270.00000"}];
+			}
+		}
+		else if(type==1)
+		{
+			varCarteiraCliente = [{"xsector": "Barras & Perfis","ntonelada": "83.48000"}];
+
+			if(varCarteiraCliente == "")
+			{
+				varCarteiraCliente = [{"xsector": "","ntonelada": ""}];
+			}
+
+			else 
+			{
+				varCarteiraCliente = [{"xsector": "Barras & Perfis","ntonelada": "83.48000"}];
+			}
+		}
+		else
+		{
+			varCarteiraCliente = [{"xsector": "0","ntonelada": "0"}];
+		}
+
+			AmCharts.makeChart("div_carteira_cliente", 
+				{
+					"type": "serial",
+					"categoryField": "xsector",
+					"rotate": true,
+					"colors": [
+						"#0000CD"
+					],
+					"startDuration": 1,
+					"categoryAxis": {
+						"gridPosition": "start"
+					},
+					"panEventsEnabled": false,
+					"trendLines": [],
+					"graphs": [
+						{
+							"balloonText": "[[xsector]]:[[value]] Toneladas",
+							"fillAlphas": 1,
+							"id": "AmGraph-1",
+							"title": "graph 1",
+							"type": "column",
+							"valueField": "ntonelada"
+						}
+					],
+					"guides": [],
+					"valueAxes": [
+						{
+							"id": "ValueAxis-1",
+							"title": ""
+						}
+					],
+					"allLabels": [],
+					"balloon": {},
+					"titles": [
+						{
+							"id": "Title-1",
+							"size": 15,
+							"text": ""
+						}
+					],
+					"dataProvider": varCarteiraCliente
+				}
+			);
+	};
+	
+			
+		</script>
+	</head>
+<body onLoad="loadPage()">
+
+	<div id="container_widget" class="container_customer" align="center">
+        <div class="one_wrap" style="width: 100%">
+				<div><span>Selecione um cliente para visualizar os dados.</span></div>
+        </div>
+	</div>
+	<div class="container_data">
+		<div id="container_widget" align="center">
+			<div class="one_wrap" style="width: 100%">
+				<div class="widget">
+					<div class="widget_title_2"><span><strong>Carteira Consolidada</strong></span></div>
+				</div>
+			</div>
+			<div class="one_wrap" style="width: 100%">
+				<div class="widget">
+					<div class="content_pad" style="padding:10px">
+						<div class="legendas-sub" align="center">
+							<div class="textos-gerais">
+								<div id="div_carteira_cliente" style="width: 100%; height: 300px; background-color: #FFFFFF;" ></div>
+								<div id="legendPlanejamento" style="margin: 5px 10px 20px 0;position: relative;text-align:left"></div>
+							</div>
+						</div>
+						<table class="categoria_btn">
+							<tr>
+								<td width="5%"></td>
+								<td width="90%" align="center">
+									<div class="categ1">
+										<a class="chang-bt planejamento_btn" href="javascript:loadCarteiraCliente(0)">Mês Anterior</a>
+										<a class="chang-bt planejamento_btn" href="javascript:loadCarteiraCliente(1)">Mês Atual</a>
+									</div>
+									<div class="vspace-25"></div>
+								</td>
+								<td width="5%"></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="container_widget" align="center">
+		<div class="one_wrap" style="width: 100%">
+			<div class="widget">
+				<div class="widget_title_2"><span><strong>Inadimplência</strong></span></div>
+			</div>
+		</div>
+		<div class="one_wrap" style="width: 100%">
+			<div class="widget">
+				<div class="content_pad" style="padding:10px">
+					<div class="legendas-sub" align="center">
+						<div class="textos-gerais">
+							<div id="div_inadimplencia" style="width: 100%; height: 300px; background-color: #FFFFFF;" ></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

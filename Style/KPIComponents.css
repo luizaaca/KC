@@ -1,0 +1,74 @@
+﻿.KPIOuterDiv
+{
+    position: relative;
+    padding: 2px;    
+    font-family: sans-serif;
+}
+
+.KPISimpleGroupContainer 
+{
+   position: absolute;
+   border-style: solid;
+   -webkit-border-radius: 15px;   
+   border-radius: 15px;
+   overflow: hidden;
+   text-align: center;
+   z-index: 1;
+   font-size: 26px;
+   padding: 5px;
+}
+
+.KPISimpleGroupItem 
+{
+    position:absolute;
+    padding:5px;
+    border-style:solid;
+    -webkit-border-top-right-radius: 15px;
+	-webkit-border-bottom-right-radius: 15px; 
+	border-top-right-radius: 15px;      	
+	border-bottom-right-radius: 15px;
+}
+
+.KPICircleGroupContainer 
+{
+    font-family: sans-serif;
+    position: relative;
+    border-style: solid;    
+}
+
+.KPISpeedometerGroupContainer 
+{
+    font-family: sans-serif;
+    position: relative;
+    border-style: solid;    
+}
+
+.KPIGroupContainer 
+{
+   position: absolute;
+   overflow: hidden;
+   text-align: center;
+   font-size: 26px;
+   padding: 5px;   
+}
+
+.KPIGroupItem
+{
+	position:relative;
+	padding:10px;
+    border-style:solid;
+    font-size: 24px;
+    line-height: 24px;
+    height: 45px;
+    margin: 10px 0 0 0;       
+}
+
+.KPIOuter
+{
+   border-style: solid;
+   overflow: hidden;
+   z-index: 1;
+   padding: 5px;
+   width: 90%;
+   font-family: sans-serif;
+}

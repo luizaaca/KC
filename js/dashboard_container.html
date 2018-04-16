@@ -1,0 +1,35 @@
+﻿
+<div class="dashContainer col s12 m{dashboard_width}" draggable="true">
+	<ul class="collapsible" data-collapsible="accordion">
+		<li>
+
+			<div class="collapsible-header active">
+				<span class="chart-title white-text">{dashboard_title}</span>
+			</div>
+
+			<div class="collapsible-body">
+				<div class="card" style="margin: 0">
+					<a class="btn-amp right btn-floating waves-effect waves-light btn-secondary" style="margin-left: 0.2rem; margin-right: 0.2rem; margin-top: 0.2rem;">
+						<i class="material-icons">fullscreen</i>
+					</a>
+
+					<a class="btn-floating card-title activator waves-effect waves-light btn-secondary right" style="margin-left: 0.2rem; margin-right: 0.2rem; margin-top: 0.2rem;">
+						<i class="material-icons">more_vert</i>
+					</a>
+
+					<div class="card-content">
+						<div class="cardDataContainer">
+							{dashboard_div}
+						</div>
+					</div>
+
+					<div class="card-reveal material-table">
+						<span class="card-title"><i class="material-icons right">close</i></span>
+						{dashboard_table_detail}
+					</div>
+				</div>
+			</div>
+			
+		</li>
+	</ul>
+</div>

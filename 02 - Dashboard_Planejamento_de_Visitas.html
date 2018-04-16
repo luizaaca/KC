@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard Planejamento de Visitas</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=Edge' />
+
+    <!--
+		<link href="{path_js}/Style/style.css" rel="stylesheet" type="text/css" />
+		<link href="{path_js}/Style/dash.css" rel="stylesheet" type="text/css" />
+		<script src="{path_js}/js/amcharts.js" type="text/javascript"></script>
+		<script src="{path_js}/js/pie.js" type="text/javascript"></script>
+		<script src="{path_js}/js/serial.js" type="text/javascript"></script>
+		<script src="{path_js}/js/MC1Lib.js" type="text/javascript"></script>
+		<script src="{path_js}/js/gauge.js" type="text/javascript"></script>
+		-->
+
+    <link href="./Style/style.css" rel="stylesheet" type="text/css" />
+    <link href="./Style/dash.css" rel="stylesheet" type="text/css" />
+    <script src="./js/amcharts.js" type="text/javascript"></script>
+    <script src="./js/pie.js" type="text/javascript"></script>
+    <script src="./js/serial.js" type="text/javascript"></script>
+    <script src="./js/MC1Lib.js" type="text/javascript"></script>
+    <script src="./js/gauge.js" type="text/javascript"></script>
+
+
+    <!--
+		<style> 
+			#scrolly{
+				width: 1000px;
+				height: 190px;
+				overflow: auto;
+				overflow-y: hidden;
+				margin: 0 auto;
+				white-space: nowrap
+			}
+			
+			.multiselect {
+				width: 200px;
+			}
+			
+			.selectBox {
+				position: relative;
+			}
+			
+			.selectBox select {
+				width: 100%;
+				font-weight: bold;
+			}
+			
+			.overSelect {
+				position: absolute;
+				left: 0; right: 0; top: 0; bottom:0;
+			}
+			
+			#checkboxes {
+				display: none;
+				border: 1px #dadada solid;
+			}
+			
+			#checkboxes label {
+				display: block;
+			}
+			
+			#checkboxes label: hover {
+				background-color: #le90ff;
+			}
+		</style>
+		-->
+
+    <script type="text/javascript">
+        // <!--var ArrayDataProvider = [[mc1_l:WTM_META_DE_VENDA]];-->
+        var ArrayDataProviderChartCRN = new Array(
+            {
+                "description": "Visitas de Pedido",
+                "customer": "KCC",
+                "gerencia": "BK2",
+                "crn": "BR23",
+                "programada": 81,
+                "naoprogramada": 50
+            }, {
+                "description": "Visitas de Negociação",
+                "customer": "KCC1",
+                "gerencia": "BK2",
+                "crn": "BR23",
+                "programada": 118,
+                "naoprogramada": 114
+            }, {
+                "description": "Visitas à Loja (DPSM)",
+                "customer": "KCC1",
+                "gerencia": "BK2",
+                "crn": "BR23",
+                "programada": 118,
+                "naoprogramada": 115
+
+            }, {
+                "description": "Visitas de Pedido",
+                "customer": "KCC1",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 81,
+                "naoprogramada": 50
+            }, {
+                "description": "Visitas de Negociação",
+                "customer": "KCC1",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 118,
+                "naoprogramada": 114
+            }, {
+                "description": "Visitas à Loja (DPSM)",
+                "customer": "KCC2",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 118,
+                "naoprogramada": 115
+
+            }, {
+                "description": "Visitas de Pedido",
+                "customer": "KCC2",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 81,
+                "naoprogramada": 50
+            }, {
+                "description": "Visitas de Negociação",
+                "customer": "KCC1",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 118,
+                "naoprogramada": 114
+            }, {
+                "description": "Visitas à Loja (DPSM)",
+                "customer": "KCC",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 118,
+                "naoprogramada": 115
+
+            });
+
+        var ArrayDataProviderChartGerencia = new Array(
+            {
+                "description": "Visitas de Pedido",
+                "customer": "KCC",
+                "gerencia": "BK2",
+                "crn": "BR23",
+                "programada": 81,
+                "naoprogramada": 50
+            }, {
+                "description": "Visitas de Negociação",
+                "customer": "KCC1",
+                "gerencia": "BK2",
+                "crn": "BR23",
+                "programada": 118,
+                "naoprogramada": 114
+            }, {
+                "description": "Visitas à Loja (DPSM)",
+                "customer": "KCC1",
+                "gerencia": "BK2",
+                "crn": "BR23",
+                "programada": 118,
+                "naoprogramada": 115
+
+            }, {
+                "description": "Visitas de Pedido",
+                "customer": "KCC1",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 81,
+                "naoprogramada": 50
+            }, {
+                "description": "Visitas de Negociação",
+                "customer": "KCC1",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 118,
+                "naoprogramada": 114
+            }, {
+                "description": "Visitas à Loja (DPSM)",
+                "customer": "KCC2",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 118,
+                "naoprogramada": 115
+
+            }, {
+                "description": "Visitas de Pedido",
+                "customer": "KCC2",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 81,
+                "naoprogramada": 50
+            }, {
+                "description": "Visitas de Negociação",
+                "customer": "KCC1",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 118,
+                "naoprogramada": 114
+            }, {
+                "description": "Visitas à Loja (DPSM)",
+                "customer": "KCC",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 118,
+                "naoprogramada": 115
+
+            });
+
+        var ArrayDataProviderChart = new Array(
+            {
+                "description": "Visitas de Pedido",
+                "customer": "KCC",
+                "gerencia": "BK2",
+                "crn": "BR23",
+                "programada": 81,
+                "naoprogramada": 50
+            }, {
+                "description": "Visitas de Negociação",
+                "customer": "KCC1",
+                "gerencia": "BK2",
+                "crn": "BR23",
+                "programada": 118,
+                "naoprogramada": 114
+            }, {
+                "description": "Visitas à Loja (DPSM)",
+                "customer": "KCC1",
+                "gerencia": "BK2",
+                "crn": "BR23",
+                "programada": 118,
+                "naoprogramada": 115
+
+            }, {
+                "description": "Visitas de Pedido",
+                "customer": "KCC1",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 81,
+                "naoprogramada": 50
+            }, {
+                "description": "Visitas de Negociação",
+                "customer": "KCC1",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 118,
+                "naoprogramada": 114
+            }, {
+                "description": "Visitas à Loja (DPSM)",
+                "customer": "KCC2",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 118,
+                "naoprogramada": 115
+
+            }, {
+                "description": "Visitas de Pedido",
+                "customer": "KCC2",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 81,
+                "naoprogramada": 50
+            }, {
+                "description": "Visitas de Negociação",
+                "customer": "KCC1",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 118,
+                "naoprogramada": 114
+            }, {
+                "description": "Visitas à Loja (DPSM)",
+                "customer": "KCC",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 118,
+                "naoprogramada": 115
+
+            });
+
+        var userLogado = "Mimoto";
+
+        var ArrayDataProviderGrid = new Array(
+            {
+                "customer": "KCC",
+                "dpsmrecomendada": 81,
+                "dpsmplanejadas": 50,
+                "dpsmrealizadas": 100,
+                "dpsmgap": 10,
+                "pednegrecomendada": 100,
+                "pednegplanejadas": 50,
+                "pednegrealizadas": 100,
+                "pedneggap": 10
+            }, {
+                "customer": "KCC1",
+                "dpsmrecomendada": 81,
+                "dpsmplanejadas": 50,
+                "dpsmrealizadas": 100,
+                "dpsmgap": -10,
+                "pednegrecomendada": 100,
+                "pednegplanejadas": 50,
+                "pednegrealizadas": 100,
+                "pedneggap": -10
+            }, {
+                "customer": "KCC2",
+                "dpsmrecomendada": 81,
+                "dpsmplanejadas": 50,
+                "dpsmrealizadas": 100,
+                "dpsmgap": -10,
+                "pednegrecomendada": 100,
+                "pednegplanejadas": 50,
+                "pednegrealizadas": -10,
+                "pedneggap": -10
+            }, {
+                "customer": "KCC1",
+                "dpsmrecomendada": 81,
+                "dpsmplanejadas": 50,
+                "dpsmrealizadas": 100,
+                "dpsmgap": -10,
+                "pednegrecomendada": 100,
+                "pednegplanejadas": 50,
+                "pednegrealizadas": 100,
+                "pedneggap": 10
+            }, {
+                "customer": "KCC",
+                "dpsmrecomendada": 81,
+                "dpsmplanejadas": 50,
+                "dpsmrealizadas": 100,
+                "dpsmgap": -10,
+                "pednegrecomendada": 100,
+                "pednegplanejadas": 50,
+                "pednegrealizadas": 100,
+                "pedneggap": 10
+            }, {
+                "customer": "KCC2",
+                "dpsmrecomendada": 81,
+                "dpsmplanejadas": 50,
+                "dpsmrealizadas": 100,
+                "dpsmgap": -10,
+                "pednegrecomendada": 100,
+                "pednegplanejadas": 50,
+                "pednegrealizadas": 100,
+                "pedneggap": -30
+            });
+
+        var selButtom = undefined;
+
+        $(document).ready(function () {
+
+            var dataAgrouped = groupBy(ArrayDataProviderChart, function (item) {
+                return item.description;
+            });
+            buildFilter(dataAgrouped, 'filtro_subcategoria', 'description', 'description');
+            divLoadCharts(dataAgrouped);
+
+            dataAgrouped = groupByCustomer(ArrayDataProviderGrid, function (item) {
+                return item.customer;
+            });
+            // buildFilter(dataAgrouped, 'filtro_cliente', 'customer', 'customer');
+
+            if (!detectmob())
+                divLoadGrid(dataAgrouped, "griddiv");
+            else
+                document.getElementById("container_table").style.display = 'none';
+
+            $('select.filtro_subcategoria').on('change', function (event) {
+
+                divLoadCharts(ArrayDataProviderChart);
+                // if (detectmob() == false)
+                //     divLoadGrid(ArrayDataProviderGrid, "griddiv");
+                // else
+                //     document.getElementById("container_table").style.display = 'none';
+
+            });
+            // $('select.filtro_cliente').on('change', function(event) {
+
+            //     divLoadCharts(ArrayDataProviderChart);
+            //     if (detectmob() == false)
+            //         divLoadGrid(ArrayDataProviderGrid, "griddiv");
+            //     else
+            //         document.getElementById("container_table").style.display = 'none';
+
+            // });
+        });
+
+        function groupBy(array, f) {
+            var groups = {};
+            array.forEach(function (o) {
+                var group = f(o);
+                groups[group] = groups[group] || [];
+                groups[group].push(o);
+            });
+            return Object.keys(groups).map(function (group) {
+                var programada = 0;
+                var naoprogramada = 0;
+                var description;
+                var customer;
+
+                groups[group].forEach(function (value) {
+                    programada += value.programada;
+                    naoprogramada += value.naoprogramada
+
+                    description = value.description;
+                    customer = value.customer;
+                });
+                return {
+                    description,
+                    customer,
+                    programada,
+                    naoprogramada
+                };
+            });
+        }
+
+        function groupByCustomer(array, f) {
+            var groups = {};
+            array.forEach(function (o) {
+                var group = f(o);
+                groups[group] = groups[group] || [];
+                groups[group].push(o);
+            });
+            return Object.keys(groups).map(function (group) {
+                var customer;
+                var dpsmrecomendada = 0;
+                var dpsmplanejadas = 0;
+                var dpsmrealizadas = 0;
+                var dpsmgap = 0;
+                var pednegrecomendada = 0;
+                var pednegplanejadas = 0;
+                var pednegrealizadas = 0;
+                var pedneggap = 0;
+
+                groups[group].forEach(function (value) {
+
+                    dpsmrecomendada += value.dpsmrecomendada;
+                    dpsmplanejadas += value.dpsmplanejadas;
+                    dpsmrealizadas += value.dpsmrealizadas;
+                    dpsmgap += value.dpsmgap;
+                    pednegrecomendada += value.pednegrecomendada;
+                    pednegplanejadas += value.pednegplanejadas;
+                    pednegrealizadas += value.pednegrealizadas;
+                    pedneggap += value.pedneggap;
+
+                    customer = value.customer;
+                });
+                return {
+                    customer,
+                    dpsmrecomendada,
+                    dpsmplanejadas,
+                    dpsmrealizadas,
+                    dpsmgap,
+                    pednegrecomendada,
+                    pednegplanejadas,
+                    pednegrealizadas,
+                    pedneggap
+                };
+            });
+        }
+
+        function loadData(nivel, categoryFilter) {
+            if (nivel == selButtom && categoryFilter == undefined)
+                nivel = 0;
+
+            selButtom = nivel;
+            var dataAgroupedbyProduct = undefined;
+
+            if (nivel == 1) {
+                dataAgroupedbyProduct = groupBy(ArrayDataProviderChartCRN, function (item) {
+                    return item.description;
+                });
+            } else if (nivel == 2) {
+                dataAgroupedbyProduct = groupBy(ArrayDataProviderChartGerencia, function (item) {
+                    return item.description;
+                });
+            } else {
+                dataAgroupedbyProduct = groupBy(ArrayDataProviderChart, function (item) {
+                    return item.description;
+                });
+            }
+
+            if (categoryFilter == undefined || categoryFilter == "Todos") {
+                buildFilter(dataAgroupedbyProduct, 'filtro_subcategoria', 'description', 'description');
+            } else {
+                dataAgroupedbyProduct = dataAgroupedbyProduct.filter(function (item) {
+                    return item.description == categoryFilter;
+                });
+            }
+            divLoadCharts(dataAgroupedbyProduct);
+        }
+
+        function detectmob() {
+            if (window.innerWidth <= 200 && window.innerHeight <= 100) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function buildFilter(array, select_option, pkey, pvalue) {
+            var v_option = '';
+            var v_count = 0;
+
+            if (select_option == "filtro_subcategoria")
+                v_option += '<option value="Todos" selected>SubCategoria</option>';
+            else
+                v_option += '<option value="Todos" selected>Cliente</option>';
+
+            for (var i = 0; i < array.length; i++) {
+                v_option += '<option value="' + array[i][pkey] + '">' + array[i][pvalue] + '</option>';
+            }
+            $('#' + select_option).html(v_option);
+        }
+
+        function divLoadCharts(array) {
+            var ArrayDataFilter = array;
+
+            debugger;
+            $filtro_subcategoria = $("#filtro_subcategoria").val();
+            $filtro_cliente = $("#filtro_cliente").val();
+
+            if ($filtro_cliente != null && $filtro_cliente != 'Todos') {
+                ArrayDataFilter = filterWithLoop(ArrayDataFilter, 'customer', $filtro_cliente);
+            }
+
+            if ($filtro_subcategoria != 'Todos') {
+                ArrayDataFilter = filterWithLoop(ArrayDataFilter, 'description', $filtro_subcategoria);
+            }
+
+            var ArrayDataFilter = groupBy(ArrayDataFilter,
+                function (item) {
+                    return item.description;
+                });
+
+            AmCharts.makeChart("chartdiv", {
+                "type": "serial",
+                "categoryField": "description",
+                "startDuration": 1,
+                "categoryAxis": {
+                    "gridPosition": "start"
+                },
+                "trendLines": [],
+                "graphs": [{
+                    "balloonText": "[[title]] of [[description]]:[[value]]",
+                    "fillAlphas": 1,
+                    "id": "AmGraph-1",
+                    "title": "Visitas Programadas",
+                    "type": "column",
+                    "labelText": "[[value]]",
+                    "valueField": "programada"
+                }, {
+                    "balloonText": "[[title]] of [[description]]:[[value]]",
+                    "fillAlphas": 1,
+                    "id": "AmGraph-2",
+                    "title": "Visitas Não Programadas",
+                    "type": "column",
+                    "labelText": "[[value]]",
+                    "valueField": "naoprogramada"
+                }],
+                "guides": [],
+                "valueAxes": [{
+                    "id": "ValueAxis-1",
+                    "stackType": "regular",
+                    "totalText": "[[total]]",
+                    "totalTextColor": "#000000",
+                    "title": "Axis title"
+                }],
+                "allLabels": [],
+                "balloon": {},
+                "legend": {
+                    "enabled": true,
+                    "useGraphSettings": true
+                },
+                "titles": [{
+                    "id": "Title-1",
+                    "size": 15,
+                    "text": "Chart Title"
+                }],
+                "dataProvider": ArrayDataFilter
+            });
+        }
+
+        function validate() {
+            for (var i = 0; i < document.getElementsByName("slt_username").length; i++) {
+                alert(document.getElementsByName("slt_username")[i].checked + "-" + document.getElementsByName("slt_username")[i].value);
+            }
+        }
+
+        var expanded = false;
+
+        function showCheckboxes() {
+            var checkboxes = document.getElementById("checkboxes");
+            if (!expanded) {
+                checkboxes.style.display = "block";
+                expanded = true;
+            } else {
+                checkboxes.style.display = "none";
+                expanded = false;
+            }
+        }
+
+        function divLoadGrid(array, tbodyID) {
+            debugger;
+            var totalGeral = new Array(0, 0, 0, 0, 0, 0, 0, 0);
+            var ArrayDataFilter = array;
+            var total;
+            // $filtro_cliente = $("#filtro_cliente").val();
+            // if ($filtro_cliente != 'Todos')
+            //     ArrayDataFilter = filterWithLoop(array, 'customer', $filtro_cliente);
+
+
+
+            var table = '';
+            $.each(ArrayDataFilter, function (key, value) {
+                debugger;
+                table = table + '<tr>';
+
+                /* utilizado para colocar cor da linha intercalada entre cinza e branco
+                if ((key % 2) == 0) {
+                	table = table + '<tr class="alt">';
+                }
+                else {
+                	table = table + '<tr class="alt1">';
+                }
+                */
+                // var col = document.getElementById("gap");
+                $.each(value, function (columKey, columnValue) {
+                    var celcolor = '';
+                    if (IsNumeric(columnValue)) {
+                        columnValue = formatNumber(columnValue, 0);
+                        if (columKey == "dpsmgap" || columKey == "pedneggap") {
+                            if (columnValue < 0)
+                                celcolor = ' bgcolor="#ff0000"><font color="#fff"';
+                            // else if (value < 0)
+                            //  celcolor = ' bgcolor="#ff0000"><font color="#fff"';
+                            //  // else
+                            //   celcolor = ' bgcolor="#66ff00"';
+                        }
+                    } else {
+                        displayValue = columnValue;
+                    }
+                    table = table + '<td' + celcolor + '>' + formatNumber(columnValue, 0) + '</td>';
+                    // col++;
+                });
+                table = table + '</tr>';
+                totalGeral[0] += parseFloat(value['dpsmrecomendada']);
+                totalGeral[1] += parseFloat(value['dpsmplanejadas']);
+                totalGeral[2] += parseFloat(value['dpsmrealizadas']);
+                totalGeral[3] += parseFloat(value['dpsmgap']);
+                totalGeral[4] += parseFloat(value['pednegrecomendada']);
+                totalGeral[5] += parseFloat(value['pednegplanejadas']);
+                totalGeral[6] += parseFloat(value['pednegrealizadas']);
+                totalGeral[7] += parseFloat(value['pedneggap']);
+
+            });
+            total = '<tr><td><strong>' + userLogado + '</strong></td>';
+            for (var i = 0; i < totalGeral.length; i++) {
+                var celcolor = '';
+                if (i < 10) {
+                    if (totalGeral[i] < 0)
+                        celcolor = ' bgcolor="#ff0000"><font color="#fff"';
+                    else
+                        displayValue = totalGeral[i];
+                }
+                total += '<td' + celcolor + '><strong>' + formatNumber(totalGeral[i], 0) + '</strong></td>';
+            }
+            total += '</tr>';
+            table = total + table;
+            $('#' + tbodyID).html(table);
+        }
+
+        function formatNumber(num, fixed) {
+            var decimalPart;
+            var isNegative = false;
+            var result;
+            if (IsNumeric(num)) {
+                if (num < 0) {
+                    isNegative = true;
+                    num = num * -1;
+                }
+
+                var array = num.toString().split('.');
+                array = array[0].split('');
+
+                var index = -3;
+                while (array.length + index > 0) {
+                    array.splice(index, 0, '.');
+                    index -= 4;
+                }
+
+                if (fixed > 0) {
+                    decimalPart = parseFloat(num).toFixed(fixed).split(".")[1];
+                    result = array.join('') + "," + decimalPart;
+                    if (isNegative) {
+                        result = '-' + result;
+                    }
+                    return result;
+                }
+                result = array.join('');
+                if (isNegative) {
+                    result = '-' + result;
+                }
+                return result;
+            }
+            return num;
+        };
+    </script>
+</head>
+
+<body>
+    <div id="container_filter" style="margin-left:0px;margin-right:20px;">
+        <div class="one_wrap">
+            <div class="widget" style="width: 100%;height:90px;">
+                <div class="widget_title">
+                    <span>Filtros</span>
+                </div>
+                <div class="vspace-25 wdt-vd" align="left" style="background-color: #FFFFFF; padding: 10px;">
+                    <table>
+                        <tr>
+                            <td>
+                                <select id="filtro_subcategoria" class="filtro_subcategoria" style="font-size:18px;"></select>
+                            </td>
+                            <td>
+                                <div class="categ1">
+                                    <a class="chang-bt nivel_btn" href="javascript:loadData(1)">CRN</a>
+                                    <a class="chang-bt nivel_btn" href="javascript:loadData(2)">Gerência</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- <select id="filtro_cliente" class="filtro_cliente" style="font-size:18px;width:250px"></select> -->
+                </div>
+            </div>
+        </div>
+
+        <!--
+			<div class="one_wrap" >
+				<div class = "multiselect">
+					<div class = "selectBox" onclick="showCheckboxes()">
+						<select>
+							<option> Select an option</option>
+						</select>
+						<div class="overSelect"></div>
+					</div>
+					<div id="checkboxes">
+						<label for="one"><input type="checkbox" id="one"/>First checkbox</label>
+						<label for="two"><input type="checkbox" id="two"/>Second checkbox</label>
+						<label for="three"><input type="checkbox" id="three"/>Third checkbox</label>
+					</div>
+				</div>
+				<button onclick="javascript:validate();">Validate</button>
+			</div>
+			-->
+    </div>
+
+    <div id="chartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;"></div>
+
+    <div id="container_table" align="center">
+        <div class="one_wrap" style="width: 100%">
+            <div class="widget">
+                <div class="widget_title_2">
+                    <span>Tabela de Apoio</span>
+                </div>
+                <div class="datagrid" style="width: 100; overflow: auto;">
+                    <table class="table_data">
+                        <thead>
+                            <tr>
+                                <th class="tg-us36"></th>
+                                <th class="tg-c3ow" colspan="4" align="center">DPSM</th>
+                                <th class="tg-c3ow" colspan="4" align="center">Pedido + Negociação</th>
+                            </tr>
+                            <tr>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Executivo</th>
+                                <!--<td class="tg-us36">Executivo</td>-->
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visitas Recomendadas</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visitas Planejadas</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visitas Realizadas</th>
+                                <th id="gap" bgcolor="#5d7b9d">
+                                    <font color="#fff">GAP</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visitas Recomendadas</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visitas Planejadas</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visitas Realizadas</th>
+                                <th id="gap" bgcolor="#5d7b9d">
+                                    <font color="#fff">GAP</th>
+                                <!--<td class="tg-us36">Visitas Recomendadas</td>
+						<td class="tg-us36">Visitas Planejadas</td>
+						<td class="tg-us36">Visitas Realizadas</td>
+						<td class="tg-us36">GAP</td>
+						<td class="tg-us36">Visitas Recomendadas</td>
+						<td class="tg-us36">Visitas Planejadas</td>
+						<td class="tg-us36">Visitas Realizadas</td>
+						<td class="tg-us36">GAP</td>-->
+                            </tr>
+                        </thead>
+                        <!-- <thead>
+                            <tr>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Executivo</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visitas Recomendadas</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visitas Planejadas</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visitas Realizadas</th>	
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visitas Recomendadas</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visitas Planejadas</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visitas Realizadas</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">GAP</th>
+                            </tr>
+						</thead>
+						-->
+                        <tbody id="griddiv" style="width: 100%; height: 100px; background-color: #FFFFFF; overflow: auto;"></tbody>
+                    </table>
+                </div>
+                <div class="widget_legend">
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
