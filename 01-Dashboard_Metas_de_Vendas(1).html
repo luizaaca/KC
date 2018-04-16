@@ -75,7 +75,6 @@
 		$(document).ready(function () {
 			loadData(0);
 			$('select.filtro_subcategoria').on('change', function (event) {
-				console.log(selButtom);
 				loadData(selButtom, $('select.filtro_subcategoria').val());
 			});
 

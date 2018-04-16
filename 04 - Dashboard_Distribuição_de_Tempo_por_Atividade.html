@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard Distribuição de Tempo por Atividade</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=Edge' />
+
+    <!--
+		<link href="{path_js}/Style/style.css" rel="stylesheet" type="text/css" />
+		<link href="{path_js}/Style/dash.css" rel="stylesheet" type="text/css" />
+		<script src="{path_js}/js/amcharts.js" type="text/javascript"></script>
+		<script src="{path_js}/js/pie.js" type="text/javascript"></script>
+		<script src="{path_js}/js/serial.js" type="text/javascript"></script>
+		<script src="{path_js}/js/MC1Lib.js" type="text/javascript"></script>
+		<script src="{path_js}/js/gauge.js" type="text/javascript"></script>
+		-->
+
+    <link href="./Style/style.css" rel="stylesheet" type="text/css" />
+    <link href="./Style/dash.css" rel="stylesheet" type="text/css" />
+    <script src="./js/amcharts.js" type="text/javascript"></script>
+    <script src="./js/pie.js" type="text/javascript"></script>
+    <script src="./js/serial.js" type="text/javascript"></script>
+    <script src="./js/MC1Lib.js" type="text/javascript"></script>
+    <script src="./js/gauge.js" type="text/javascript"></script>
+
+
+    <script type="text/javascript">
+        // <!--var ArrayDataProvider = [[mc1_l:WTM_META_DE_VENDA]];-->
+        var ArrayDataProviderChart = new Array({
+            "tipo": "Planejado",
+            "categoria": "Interna",
+            "valor": 20            
+        }, {
+            "tipo": "Planejado",
+            "categoria": "Externa",
+            "valor": 30           
+        },
+        {
+            "tipo": "Realizado",
+            "categoria": "Interna",
+            "valor": 30            
+        }, {
+            "tipo": "Realizado",
+            "categoria": "Externa",
+            "valor": 35           
+        }
+        );
+
+        var ArrayDataProviderGrid = new Array
+        ({
+            //"tipo": "Internas",
+            "atividade": "Planejamento",
+            "texto": "Atividades relacionadas ao planejamento da rotina. Exemplos: Planejamento do calendário."
+        },
+        {
+            //"tipo": "Internas",
+            "atividade": "Análises Internas",
+            "texto": "Análise de dados cliente e planejamento de vendas. Exemplos: alinhamento de volumes com gestor, análise dados clientes, análise TEMPOS, análise Tool Set."
+        },
+        {
+            //"tipo": "Internas",
+            "atividade": "Análises Diversas",
+            "texto": "Atividades dedicadas a remuneração, despesas e pagamentos. Exemplos: análise simulador variável, KCP&D, RDD."
+        },
+        {
+            //"tipo": "Externas",
+            "atividade": "Visita Negociação",
+            "texto": "Visita ao cliente, que tem como objetivo de negociar planos, campanhas, preços, investimentos, parâmetros de loja, entre outros."
+        },
+        {
+            //"tipo": "Externas",
+            "atividade": "Visita Pedido",
+            "texto": "Visita ao cliente, que tem como objetivo negociar um ou mais pedidos."
+        },
+        
+        );
+
+        $(document).ready(function() {
+
+            var dataAgrouped = groupBy(ArrayDataProviderChart, function(item) {
+                return item.tipo;
+            });
+            buildFilter(dataAgrouped, 'filtro_tipo', 'tipo', 'tipo');
+            divLoadCharts(dataAgrouped);
+            debugger;
+            dataAgrouped = groupBy(ArrayDataProviderGrid, function(item) {
+                return item.categoria;
+            });
+            buildFilter(dataAgrouped, 'filtro_categoria', 'categoria', 'categoria');
+
+            if (detectmob() == false)
+                divLoadGrid(ArrayDataProviderGrid, "griddiv");
+            else
+                document.getElementById("container_table").style.display = 'none';
+
+            $('select.filtro_tipo').on('change', function(event) {
+
+                divLoadCharts(ArrayDataProviderChart);
+                if (detectmob() == false)
+                    divLoadGrid(ArrayDataProviderGrid, "griddiv");
+                else
+                    document.getElementById("container_table").style.display = 'none';
+
+            });
+            $('select.filtro_categoria').on('change', function(event) {
+
+                divLoadCharts(ArrayDataProviderChart);
+                if (detectmob() == false)
+                    divLoadGrid(ArrayDataProviderGrid, "griddiv");
+                else
+                    document.getElementById("container_table").style.display = 'none';
+
+            });
+        });
+
+        function groupBy(array, f) {
+            var groups = {};
+            array.forEach(function(o) {
+                var group = f(o);
+                groups[group] = groups[group] || [];
+                groups[group].push(o);
+            });
+            return Object.keys(groups).map(function(group) {
+                var tipo;
+                var categoria;
+                var valor =0;
+
+                groups[group].forEach(function(value) {
+                    tipo = value.tipo;
+                    categoria = value.categoria
+                    valor += value.valor;
+                });
+                return {
+                    tipo,
+                    categoria,
+                    valor
+                };
+            });
+        }
+
+        function detectmob() {
+            if (window.innerWidth <= 200 && window.innerHeight <= 100) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function buildFilter(array, select_option, pkey, pvalue) {
+            var v_option = '';
+            var v_count = 0;
+
+            if (select_option == "filtro_tipo")
+                v_option += '<option value="Todos" selected>Tipo</option>';
+
+            for (var i = 0; i < array.length; i++) {
+                v_option += '<option value="' + array[i][pkey] + '">' + array[i][pvalue] + '</option>';
+            }
+            $('#' + select_option).html(v_option);
+        }
+
+
+        function divLoadCharts(array) {
+            var ArrayDataFilter = array;
+
+        //    debugger;
+            $filtro_tipo = $("#filtro_tipo").val();
+
+            if ($filtro_tipo != 'Todos') {
+                ArrayDataFilter = filterWithLoop(ArrayDataFilter, 'tipo', $filtro_tipo);
+            }
+
+            var ArrayDataFilter = groupBy(ArrayDataFilter,
+                function(item) {
+                    return item.tipo;
+                });
+
+           AmCharts.makeChart("chartdiv",
+				{
+					"type": "pie",
+					"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[valor]]</b></span>",
+					"labelText": "[[title]]: [[valor]]",
+					"minRadius": 0,
+					"pieX": "50%",
+					"pieY": "50%",
+					"radius": "0%",
+					"startAngle": 82.8,
+					"accessibleLabel": "[[title]]: [[valor]] [[categoria]]",
+					"tabIndex": 3,
+					"titleField": "categoria",
+					"valueField": "valor",
+					"allLabels": [],
+					"balloon": {},
+					"legend": {
+						"enabled": true,
+						"align": "center",
+						"markerType": "circle"
+					},
+					"titles": [],
+					"dataProvider": ArrayDataFilter
+				}
+			);
+        }
+
+        function validate() {
+            for (var i = 0; i < document.getElementsByName("slt_username").length; i++) {
+                alert(document.getElementsByName("slt_username")[i].checked + "-" + document.getElementsByName("slt_username")[i].value);
+            }
+        }
+
+        var expanded = false;
+
+        function showCheckboxes() {
+            var checkboxes = document.getElementById("checkboxes");
+            if (!expanded) {
+                checkboxes.style.display = "block";
+                expanded = true;
+            } else {
+                checkboxes.style.display = "none";
+                expanded = false;
+            }
+        }
+        function divLoadGrid(array, tbodyID) {
+				var totalGeral = new Array();
+				var ArrayDataFilter = array;
+				
+				$filtro_subcategoria = $("#filtro_subcategoria").val();
+				if ($filtro_subcategoria != 'Todos')
+					ArrayDataFilter = filterWithLoop(array, 'descricao', $filtro_subcategoria);
+				
+				
+				var table = '';
+				$.each(ArrayDataFilter, function (key, value) {
+					table = table + '<tr>';
+					
+					/* utilizado para colocar cor da linha intercalada entre cinza e branco
+					if ((key % 2) == 0) {
+						table = table + '<tr class="alt">';
+					}
+					else {
+						table = table + '<tr class="alt1">';
+					}
+					*/
+					var col = 0;
+					$.each(value, function (key, value) {
+						var celcolor = '';
+						if (IsNumeric(value)) {
+							displayValue = formatNumber(value, 0);
+							if (col > 0 && col < 4) {
+								if (value == 0)
+									celcolor = ' bgcolor="#fff000"';
+								else if (value < 0)
+									celcolor = ' bgcolor="#ff0000"><font color="#fff"';
+								else 
+									celcolor = ' bgcolor="#66ff00"';
+							}
+						} else {
+							displayValue = value;
+						}
+						table = table + '<td' + celcolor + '>' + formatNumber(value, 0) + '</td>';
+						col++;
+                        
+					});
+					table = table + '</tr>';
+					
+				});
+				//table += '<tr><td><strong>Totais</strong></td>';
+				for (var i = 0; i < totalGeral.length; i++) {
+					var celcolor = '';
+					if (i < 3) {
+						if (totalGeral[i] == 0)
+							celcolor = ' bgcolor="#fff000"';
+						else if (totalGeral[i] < 0)
+							celcolor = ' bgcolor="#ff0000"><font color="#fff"';
+						else 
+							celcolor = ' bgcolor="#66ff00"';
+					}
+					table += '<td' + celcolor + '><strong>' + formatNumber(totalGeral[i], 0) + '</strong></td>';
+				}
+				table += '</tr>';
+				$('#' + tbodyID).html(table);
+			}
+
+        function formatNumber(num, fixed) {
+            var decimalPart;
+            var isNegative = false;
+            var result;
+            if (IsNumeric(num)) {
+                if (num < 0) {
+                    isNegative = true;
+                    num = num * -1;
+                }
+
+                var array = num.toString().split('.');
+                array = array[0].split('');
+
+                var index = -3;
+                while (array.length + index > 0) {
+                    array.splice(index, 0, '.');
+                    index -= 4;
+                }
+
+                if (fixed > 0) {
+                    decimalPart = parseFloat(num).toFixed(fixed).split(".")[1];
+                    result = array.join('') + "," + decimalPart;
+                    if (isNegative) {
+                        result = '-' + result;
+                    }
+                    return result;
+                }
+                result = array.join('');
+                if (isNegative) {
+                    result = '-' + result;
+                }
+                return result;
+            }
+            return num;
+        };
+    </script>
+</head>
+
+<body>
+    <div id="container_filter" style="margin-left:0px;margin-right:20px;">
+        <div class="one_wrap">
+            <div class="widget" style="width: 100%;height:90px;">
+                <div class="widget_title"><span>Filtros</span></div>
+                <div class="vspace-25 wdt-vd" align="left" style="background-color: #FFFFFF; padding: 10px;">
+                    <select id="filtro_tipo" class="filtro_tipo" style="font-size:18px;"></select>
+                </div>
+            </div>
+        </div>
+
+        <!--
+			<div class="one_wrap" >
+				<div class = "multiselect">
+					<div class = "selectBox" onclick="showCheckboxes()">
+						<select>
+							<option> Select an option</option>
+						</select>
+						<div class="overSelect"></div>
+					</div>
+					<div id="checkboxes">
+						<label for="one"><input type="checkbox" id="one"/>First checkbox</label>
+						<label for="two"><input type="checkbox" id="two"/>Second checkbox</label>
+						<label for="three"><input type="checkbox" id="three"/>Third checkbox</label>
+					</div>
+				</div>
+				<button onclick="javascript:validate();">Validate</button>
+			</div>
+			-->
+    </div>
+
+    <div id="chartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;"></div>
+
+    <div id="container_table" align="center">
+        <div class="one_wrap" style="width: 100%">
+            <div class="widget">
+                <div class="widget_title_2"><span>Tabela de Apoio</span></div>
+                <div class="datagrid" style="width: 100; overflow: auto;">
+                    <table class="table_data">
+                        <thead>
+                            <tr>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Atividades Internas</th>
+                                <!--<td class="tg-us36">Executivo</td>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Atividade</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Descrição</th>
+                                
+                                <td class="tg-us36">Visitas Recomendadas</td>
+						<td class="tg-us36">Visitas Planejadas</td>
+						<td class="tg-us36">Visitas Realizadas</td>
+						<td class="tg-us36">GAP</td>
+						<td class="tg-us36">Visitas Recomendadas</td>
+						<td class="tg-us36">Visitas Planejadas</td>
+						<td class="tg-us36">Visitas Realizadas</td>
+						<td class="tg-us36">GAP</td>
+                            </tr> -->
+                        </thead>
+                         <thead>
+                            <tr>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Atividade</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Descrição</th>
+                             <!--   <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visitas Planejadas</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visitas Realizadas</th>	
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visitas Recomendadas</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visitas Planejadas</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visitas Realizadas</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">GAP</th> -->
+                            </tr>
+						</thead>
+						
+                        <tbody id="griddiv" style="width: 100%; height: 100px; background-color: #FFFFFF; overflow: auto;"></tbody>
+                    </table>
+                </div>
+                <div class="widget_legend"><span></span></div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
