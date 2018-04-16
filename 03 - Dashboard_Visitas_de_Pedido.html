@@ -71,149 +71,193 @@
 
     <script type="text/javascript">
         // <!--var ArrayDataProvider = [[mc1_l:WTM_META_DE_VENDA]];-->
-        var ArrayDataProviderChart = new Array({
-            "pedido": "Com Pedido",
-            "customer": "KCC",
-            "qtde": 30,
-            "tipo": "Visitas de Pedido",
-            "visita": "Programada"
-        }, {
-            "pedido": "Sem Pedido",
-            "customer": "KCC",
-            "qtde": 50,
-            "tipo": "Visitas de Pedido",
-            "visita": "Não Programada"
-        }, {
-            "pedido": "Sem Pedido",
-            "customer": "KCC1",
-            "qtde": 10,
-            "tipo": "Visitas de Negociação",
-            "visita": "Programada"
-        }, {
-            "pedido": "Sem Pedido",
-            "customer": "KCC1",
-            "qtde": 30,
-            "tipo": "Visitas à Loja (DPSM)",
-            "visita": "Não Programada"
-        }, {
-            "pedido": "Com Pedido",
-            "customer": "KCC2",
-            "qtde": 80,
-            "tipo": "Visitas de Negociação",
-            "visita": "Programada"
-        }, {
-            "pedido": "Com Pedido",
-            "customer": "KCC2",
-            "qtde": 10,
-            "tipo": "Visitas à Loja (DPSM)",
-            "visita": "Não Programada"
-        },{
-            "pedido": "Com Pedido",
-            "customer": "KCC1",
-            "qtde": 30,
-            "tipo": "Visitas de Pedido",
-            "visita": "Programada"
-        }, {
-            "pedido": "Sem Pedido",
-            "customer": "KCC1",
-            "qtde": 50,
-            "tipo": "Visitas de Pedido",
-            "visita": "Não Programada"
-        }, {
-            "pedido": "Sem Pedido",
-            "customer": "KCC2",
-            "qtde": 10,
-            "tipo": "Visitas de Negociação",
-            "visita": "Programada"
-        }, {
-            "pedido": "Sem Pedido",
-            "customer": "KCC2",
-            "qtde": 30,
-            "tipo": "Visitas à Loja (DPSM)",
-            "visita": "Não Programada"
-        }, {
-            "pedido": "Com Pedido",
-            "customer": "KCC",
-            "qtde": 80,
-            "tipo": "Visitas de Negociação",
-            "visita": "Programada"
-        }, {
-            "pedido": "Com Pedido",
-            "customer": "KCC",
-            "qtde": 10,
-            "tipo": "Visitas à Loja (DPSM)",
-            "visita": "Não Programada"
-        }
-        
+        var ArrayDataProviderChart = new Array(
+            {
+                "pedido": "Com Pedido",
+                "customer": "KCC",
+                "qtde": 30,
+                "tipo": "Visitas de Pedido",
+                "visita": "Programada"
+            }, {
+                "pedido": "Sem Pedido",
+                "customer": "KCC",
+                "qtde": 50,
+                "tipo": "Visitas de Pedido",
+                "visita": "Não Programada"
+            }, {
+                "pedido": "Sem Pedido",
+                "customer": "KCC1",
+                "qtde": 10,
+                "tipo": "Visitas de Negociação",
+                "visita": "Programada"
+            }, {
+                "pedido": "Sem Pedido",
+                "customer": "KCC1",
+                "qtde": 30,
+                "tipo": "Visitas à Loja (DPSM)",
+                "visita": "Não Programada"
+            }, {
+                "pedido": "Com Pedido",
+                "customer": "KCC2",
+                "qtde": 80,
+                "tipo": "Visitas de Negociação",
+                "visita": "Programada"
+            }, {
+                "pedido": "Com Pedido",
+                "customer": "KCC2",
+                "qtde": 10,
+                "tipo": "Visitas à Loja (DPSM)",
+                "visita": "Não Programada"
+            }, {
+                "pedido": "Com Pedido",
+                "customer": "KCC1",
+                "qtde": 30,
+                "tipo": "Visitas de Pedido",
+                "visita": "Programada"
+            }, {
+                "pedido": "Sem Pedido",
+                "customer": "KCC1",
+                "qtde": 50,
+                "tipo": "Visitas de Pedido",
+                "visita": "Não Programada"
+            }, {
+                "pedido": "Sem Pedido",
+                "customer": "KCC2",
+                "qtde": 10,
+                "tipo": "Visitas de Negociação",
+                "visita": "Programada"
+            }, {
+                "pedido": "Sem Pedido",
+                "customer": "KCC2",
+                "qtde": 30,
+                "tipo": "Visitas à Loja (DPSM)",
+                "visita": "Não Programada"
+            }, {
+                "pedido": "Com Pedido",
+                "customer": "KCC",
+                "qtde": 80,
+                "tipo": "Visitas de Negociação",
+                "visita": "Programada"
+            }, {
+                "pedido": "Com Pedido",
+                "customer": "KCC",
+                "qtde": 10,
+                "tipo": "Visitas à Loja (DPSM)",
+                "visita": "Não Programada"
+            }
+
         );
 
-        var ArrayDataProviderGrid = new Array({
-            "customer": "KCC",
-            "compedido": 81,
-            "sempedido": 50,
-           
-        }, {
-            "customer": "KCC1",
-            "compedido": 81,
-            "sempedido": 50,
-        }, {
-            "customer": "KCC2",
-            "compedido": 81,
-            "sempedido": 50,
+        var ArrayDataProviderGrid = new Array(
+            {
+                "customer": "KCC",
+                "compedido": 81,
+                "sempedido": 50,
+
+            }, {
+                "customer": "KCC1",
+                "compedido": 81,
+                "sempedido": 50,
+            }, {
+                "customer": "KCC2",
+                "compedido": 81,
+                "sempedido": 50,
+            });
+
+        var selButtom = undefined;
+
+        $(document).ready(function () {
+            loadData(0);
+            $("#filtro_tipo").on('change', function (event) {
+                loadData(selButtom, $("#filtro_tipo").val(), $("#filtro_visita").val());
+            });
+
+            $("#filtro_visita").on('change', function (event) {
+                loadData(selButtom, $("#filtro_tipo").val(), $("#filtro_visita").val());
+            });
+
+            $("a").click(function () {
+                var selected = $(this).hasClass("selected");
+
+                $("a." + $(this).attr("class").split(' ')[1]).removeClass("selected");
+                $("a." + $(this).attr("class").split(' ')[1]).attr("style", "color: #867F79 !important").css("background", "EBEBEB");
+
+                if (!selected) {
+                    $(this).attr("style", "color:#fff !important").css("background", "#939FA2").css("text-decoration", "none");
+                    $(this).addClass("selected");
+                }
+            });
         });
 
-        $(document).ready(function() {
+        function PrepareData(item) {
+            var tipo = item.tipo;
+            var pedido = item.pedido;
+            var qtde = item.qtde;
+            var customer = item.customer;
+            var visita = item.visita;
+            var descricao = item.pedido + '-' + item.customer;
 
-            var dataAgrouped = groupBy(ArrayDataProviderChart, function(item) {
-                return item.tipo;
-            });
-            buildFilter(dataAgrouped, 'filtro_tipo', 'tipo', 'tipo');
+            return {
+                tipo,
+                pedido,
+                qtde,
+                customer,
+                visita,
+                descricao
+            };
+        }
+
+        function loadData(nivel, typeFilter, visitFilter) {
+            if (nivel == selButtom && (typeFilter == undefined || typeFilter == "Todos") && (visitFilter == undefined || visitFilter == "Todos"))
+                nivel = 0;
+
+            selButtom = nivel;
+            var dataAgrouped = undefined;
+
+            if (nivel == 1) {
+                dataAgrouped = QueryTotalBrasil.map(PrepareData);
+            } else if (nivel == 2) {
+                dataAgrouped = QueryCRN.map(PrepareData);
+            } else if (nivel == 3) {
+                dataAgrouped = QueryGerencia.map(PrepareData);
+            } else {
+                dataAgrouped = ArrayDataProviderChart.map(PrepareData);
+            }
+
+            if ((typeFilter == undefined || typeFilter == "Todos") && (visitFilter == undefined || visitFilter == "Todos")) {
+                buildFilterTipo(dataAgrouped.map(i => i.tipo).filter((value, index, self) => self.indexOf(value) === index));
+                buildFilterVisita(dataAgrouped.map(i => i.visita).filter((value, index, self) => self.indexOf(value) === index));
+            } else {
+                if (typeFilter && typeFilter != "Todos") {
+                    dataAgrouped = dataAgrouped.filter(function (item) {
+                        return item.tipo == typeFilter;
+                    });
+                }
+                if (visitFilter && visitFilter != "Todos") {
+                    dataAgrouped = dataAgrouped.filter(function (item) {
+                        return item.visita == visitFilter;
+                    });
+                }
+            }
+
             divLoadCharts(dataAgrouped);
-            debugger;
-            dataAgrouped = groupBy(ArrayDataProviderGrid, function(item) {
-                return item.visita;
-            });
-            buildFilter(dataAgrouped, 'filtro_visita', 'visita', 'visita');
-
-            if (detectmob() == false)
-                divLoadGrid(ArrayDataProviderGrid, "griddiv");
-            else
-                document.getElementById("container_table").style.display = 'none';
-
-            $('select.filtro_tipo').on('change', function(event) {
-
-                divLoadCharts(ArrayDataProviderChart);
-                if (detectmob() == false)
-                    divLoadGrid(ArrayDataProviderGrid, "griddiv");
-                else
-                    document.getElementById("container_table").style.display = 'none';
-
-            });
-            $('select.filtro_visita').on('change', function(event) {
-
-                divLoadCharts(ArrayDataProviderChart);
-                if (detectmob() == false)
-                    divLoadGrid(ArrayDataProviderGrid, "griddiv");
-                else
-                    document.getElementById("container_table").style.display = 'none';
-
-            });
-        });
+            divLoadGrid(ArrayDataProviderGrid, "griddiv");
+        }
 
         function groupBy(array, f) {
             var groups = {};
-            array.forEach(function(o) {
+            array.forEach(function (o) {
                 var group = f(o);
                 groups[group] = groups[group] || [];
                 groups[group].push(o);
             });
-            return Object.keys(groups).map(function(group) {
+            return Object.keys(groups).map(function (group) {
                 var qtde = 0;
                 var pedido;
                 var tipo;
                 var visita;
 
-                groups[group].forEach(function(value) {
+                groups[group].forEach(function (value) {
                     tipo += value.tipo;
                     visita += value.visita
 
@@ -237,67 +281,57 @@
             }
         }
 
-        function buildFilter(array, select_option, pkey, pvalue) {
+        function buildFilterVisita(array) {
+            var v_option = '';
+            var v_count = 0;
+            v_option += '<option value="Todos" selected>Visita</option>';
+
+            for (var i = 0; i < array.length; i++) {
+                v_option += '<option value="' + array[i] + '">' + array[i] + '</option>';
+            }
+            $('#filtro_visita').html(v_option);
+        }
+
+        function buildFilterTipo(array) {
             var v_option = '';
             var v_count = 0;
 
-            if (select_option == "filtro_tipo")
-                v_option += '<option value="Todos" selected>Tipo</option>';
-            else
-                v_option += '<option value="Todos" selected>Visita</option>';
+            v_option += '<option value="Todos" selected>Tipo</option>';
 
             for (var i = 0; i < array.length; i++) {
-                v_option += '<option value="' + array[i][pkey] + '">' + array[i][pvalue] + '</option>';
+                v_option += '<option value="' + array[i] + '">' + array[i] + '</option>';
             }
-            $('#' + select_option).html(v_option);
+            $("#filtro_tipo").html(v_option);
         }
-
 
         function divLoadCharts(array) {
             var ArrayDataFilter = array;
 
-           // debugger;
-            $filtro_tipo = $("#filtro_tipo").val();
-            $filtro_visita = $("#filtro_visita").val();
-
-            if ($filtro_visita != null && $filtro_visita != 'Todos') {
-                ArrayDataFilter = filterWithLoop(ArrayDataFilter, 'visita', $filtro_visita);
-            }
-
-            if ($filtro_tipo != 'Todos') {
-                ArrayDataFilter = filterWithLoop(ArrayDataFilter, 'tipo', $filtro_tipo);
-            }
-
-            var ArrayDataFilter = groupBy(ArrayDataFilter,
-                function(item) {
-                    return item.description;
-                });
-
-           AmCharts.makeChart("chartdiv",
-				{
-					"type": "pie",
-					"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[qtde]]</b></span>",
-					"labelText": "[[title]]: [[qtde]]",
-					"minRadius": 0,
-					"pieX": "50%",
-					"pieY": "50%",
-					"radius": "0%",
-					"startAngle": 82.8,
-					"accessibleLabel": "[[title]]: [[qtde]] [[pedido]]",
-					"tabIndex": 3,
-					"titleField": "pedido",
-					"valueField": "qtde",
-					"allLabels": [],
-					"balloon": {},
-					"legend": {
-						"enabled": true,
-						"align": "center",
-						"markerType": "circle"
-					},
-					"titles": [],
-					"dataProvider": ArrayDataFilter
-				}
-			);
+            AmCharts.makeChart("chartdiv",
+                {
+                    "type": "pie",
+                    "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[qtde]]</b></span>",
+                    "labelText": "[[title]]: [[qtde]]",
+                    "minRadius": 0,
+                    "pieX": "50%",
+                    "pieY": "50%",
+                    "radius": "0%",
+                    "startAngle": 82.8,
+                    "accessibleLabel": "[[title]]: [[qtde]] [[descricao]]",
+                    "tabIndex": 3,
+                    "titleField": "descricao",
+                    "valueField": "qtde",
+                    "allLabels": [],
+                    "balloon": {},
+                    "legend": {
+                        "enabled": true,
+                        "align": "center",
+                        "markerType": "circle"
+                    },
+                    "titles": [],
+                    "dataProvider": ArrayDataFilter
+                }
+            );
         }
 
         function validate() {
@@ -319,65 +353,65 @@
             }
         }
         function divLoadGrid(array, tbodyID) {
-				var totalGeral = new Array(0, 0);
-				var ArrayDataFilter = array;
-				
-				$filtro_tipo = $("#filtro_tipo").val();
-				if ($filtro_tipo != 'Todos')
-					ArrayDataFilter = filterWithLoop(array, 'tipo', $filtro_tipo);
-				
-				
-				var table = '';
-				$.each(ArrayDataFilter, function (key, value) {
-					table = table + '<tr>';
-					
-					/* utilizado para colocar cor da linha intercalada entre cinza e branco
-					if ((key % 2) == 0) {
-						table = table + '<tr class="alt">';
-					}
-					else {
-						table = table + '<tr class="alt1">';
-					}
-					*/
-					var col = 0;
-					$.each(value, function (key, value) {
-						var celcolor = '';
-						if (IsNumeric(value)) {
-							displayValue = formatNumber(value, 0);
-							if (col > 0 && col < 0) {
-								if (value == 0)
-									celcolor = ' bgcolor="#fff000"';
-								else if (value < 0)
-									celcolor = ' bgcolor="#fff000"><font color="#fff"';
-								else 
-									celcolor = ' bgcolor="#fff000"';
-							}
-						} else {
-							displayValue = value;
-						}
-						table = table + '<td' + celcolor + '>' + formatNumber(value, 0) + '</td>';
-						col++;
-					});
-					table = table + '</tr>';
-					totalGeral[0] +=  parseFloat(value['compedido']);
-					totalGeral[1] +=  parseFloat(value['sempedido']);
-				});
-				table += '<tr><td><strong>Total Geral</strong></td>';
-				for (var i = 0; i < totalGeral.length; i++) {
-					var celcolor = '';
-					if (i < 0) {
-						if (totalGeral[i] == 0)
-							celcolor = ' bgcolor="#fff000"';
-						else if (totalGeral[i] < 0)
-							celcolor = ' bgcolor="#fff000"><font color="#fff"';
-						else 
-							celcolor = ' bgcolor="#fff000"';
-					}
-					table += '<td' + celcolor + '><strong>' + formatNumber(totalGeral[i], 0) + '</strong></td>';
-				}
-				table += '</tr>';
-				$('#' + tbodyID).html(table);
-			}
+            var totalGeral = new Array(0, 0);
+            var ArrayDataFilter = array;
+
+            $filtro_tipo = $("#filtro_tipo").val();
+            if ($filtro_tipo != 'Todos')
+                ArrayDataFilter = filterWithLoop(array, 'tipo', $filtro_tipo);
+
+
+            var table = '';
+            $.each(ArrayDataFilter, function (key, value) {
+                table = table + '<tr>';
+
+                /* utilizado para colocar cor da linha intercalada entre cinza e branco
+                if ((key % 2) == 0) {
+                    table = table + '<tr class="alt">';
+                }
+                else {
+                    table = table + '<tr class="alt1">';
+                }
+                */
+                var col = 0;
+                $.each(value, function (key, value) {
+                    var celcolor = '';
+                    if (IsNumeric(value)) {
+                        displayValue = formatNumber(value, 0);
+                        if (col > 0 && col < 0) {
+                            if (value == 0)
+                                celcolor = ' bgcolor="#fff000"';
+                            else if (value < 0)
+                                celcolor = ' bgcolor="#fff000"><font color="#fff"';
+                            else
+                                celcolor = ' bgcolor="#fff000"';
+                        }
+                    } else {
+                        displayValue = value;
+                    }
+                    table = table + '<td' + celcolor + '>' + formatNumber(value, 0) + '</td>';
+                    col++;
+                });
+                table = table + '</tr>';
+                totalGeral[0] += parseFloat(value['compedido']);
+                totalGeral[1] += parseFloat(value['sempedido']);
+            });
+            table += '<tr><td><strong>Total Geral</strong></td>';
+            for (var i = 0; i < totalGeral.length; i++) {
+                var celcolor = '';
+                if (i < 0) {
+                    if (totalGeral[i] == 0)
+                        celcolor = ' bgcolor="#fff000"';
+                    else if (totalGeral[i] < 0)
+                        celcolor = ' bgcolor="#fff000"><font color="#fff"';
+                    else
+                        celcolor = ' bgcolor="#fff000"';
+                }
+                table += '<td' + celcolor + '><strong>' + formatNumber(totalGeral[i], 0) + '</strong></td>';
+            }
+            table += '</tr>';
+            $('#' + tbodyID).html(table);
+        }
 
         function formatNumber(num, fixed) {
             var decimalPart;
@@ -421,7 +455,9 @@
     <div id="container_filter" style="margin-left:0px;margin-right:20px;">
         <div class="one_wrap">
             <div class="widget" style="width: 100%;height:90px;">
-                <div class="widget_title"><span>Filtros</span></div>
+                <div class="widget_title">
+                    <span>Filtros</span>
+                </div>
                 <div class="vspace-25 wdt-vd" align="left" style="background-color: #FFFFFF; padding: 10px;">
                     <select id="filtro_tipo" class="filtro_tipo" style="font-size:18px;"></select>
                     <select id="filtro_visita" class="filtro_visita" style="font-size:18px;"></select>
@@ -454,7 +490,9 @@
     <div id="container_table" align="center">
         <div class="one_wrap" style="width: 100%">
             <div class="widget">
-                <div class="widget_title_2"><span>Tabela de Apoio</span></div>
+                <div class="widget_title_2">
+                    <span>Tabela de Apoio</span>
+                </div>
                 <div class="datagrid" style="width: 100; overflow: auto;">
                     <table class="table_data">
                         <thead>
@@ -466,7 +504,7 @@
                                     <font color="#fff">Com Pedido</th>
                                 <th bgcolor="#5d7b9d">
                                     <font color="#fff">Sem Pedido</th>
-                                
+
                                 <!--<td class="tg-us36">Visitas Recomendadas</td>
 						<td class="tg-us36">Visitas Planejadas</td>
 						<td class="tg-us36">Visitas Realizadas</td>
@@ -501,7 +539,9 @@
                         <tbody id="griddiv" style="width: 100%; height: 100px; background-color: #FFFFFF; overflow: auto;"></tbody>
                     </table>
                 </div>
-                <div class="widget_legend"><span></span></div>
+                <div class="widget_legend">
+                    <span></span>
+                </div>
             </div>
         </div>
     </div>

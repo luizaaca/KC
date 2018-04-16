@@ -210,8 +210,8 @@
             };
         }
 
-        function loadData(nivel, categoryFilter) {
-            if (nivel == selButtom && categoryFilter == undefined)
+        function loadData(nivel, typeFilter) {
+            if (nivel == selButtom && typeFilter == undefined)
                 nivel = 0;
 
             selButtom = nivel;
@@ -227,12 +227,11 @@
                 dataAgrouped = ArrayDataProviderChart.map(PrepareData);
             }
 
-            if (categoryFilter == undefined || categoryFilter == "Todos") {
-                console.log(dataAgrouped.map(i => i.tipo).filter((value, index, self) => self.indexOf(value) === index));
+            if (typeFilter == undefined || typeFilter == "Todos") {
                 buildFilterTipo(dataAgrouped.map(i => i.tipo).filter((value, index, self) => self.indexOf(value) === index));
             } else {
                 dataAgrouped = dataAgrouped.filter(function (item) {
-                    return item.tipo == categoryFilter;
+                    return item.tipo == typeFilter;
                 });
             }
 
