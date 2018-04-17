@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard Visitas de Pedido</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=Edge' />
+
+    <!--
+		<link href="{path_js}/Style/style.css" rel="stylesheet" type="text/css" />
+		<link href="{path_js}/Style/dash.css" rel="stylesheet" type="text/css" />
+		<script src="{path_js}/js/amcharts.js" type="text/javascript"></script>
+		<script src="{path_js}/js/pie.js" type="text/javascript"></script>
+		<script src="{path_js}/js/serial.js" type="text/javascript"></script>
+		<script src="{path_js}/js/MC1Lib.js" type="text/javascript"></script>
+		<script src="{path_js}/js/gauge.js" type="text/javascript"></script>
+		-->
+
+    <link href="./Style/style.css" rel="stylesheet" type="text/css" />
+    <link href="./Style/dash.css" rel="stylesheet" type="text/css" />
+    <script src="./js/amcharts.js" type="text/javascript"></script>
+    <script src="./js/pie.js" type="text/javascript"></script>
+    <script src="./js/serial.js" type="text/javascript"></script>
+    <script src="./js/MC1Lib.js" type="text/javascript"></script>
+    <script src="./js/gauge.js" type="text/javascript"></script>
+
+    <style>
+        .th-head {
+            background-color: #7D7D7D !important;
+            color: #FFFFFF !important;
+        }
+
+        .tr-footer {
+            background-color: #7D7D7D !important;
+            text-transform: uppercase;
+        }
+
+        .td-footer {
+            color: #FFFFFF !important;
+            font-size: 14px !important;
+        }
+
+        .xpand {
+            padding-right: 5px !important;
+            white-space: nowrap;
+            width: 10px;
+            font-size: 18px !important;
+            cursor: pointer;
+        }
+
+        .xpand-exec {
+            padding-left: 0 !important;
+            border-left: 0 !important;
+        }
+
+        .detail-cell {
+            padding-left: 25px !important;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <script type="text/javascript">
+        // <!--var ArrayDataProvider = [[mc1_l:WTM_META_DE_VENDA]];-->
+
+        var ArrayDataProviderGrid = new Array({
+            "salesman": "William",
+            "customer": "KCC",
+            "previsaorealizado": 6,
+            "realizado": 5,
+            "gaprealizado": 10,
+            "visitapedidorealizado": 25,
+            "previsaoarealizar": 11,
+            "visitapedidoarealizar": 11,
+            "previsaototal": 11,
+            "gaptotal": 11,
+            "visitapedidototal": 11
+        }, {
+                "salesman": "William",
+                "customer": "KCC1",
+                "previsaorealizado": 6,
+                "realizado": 5,
+                "gaprealizado": 10,
+                "visitapedidorealizado": 25,
+                "previsaoarealizar": 11,
+                "visitapedidoarealizar": 11,
+                "previsaototal": 11,
+                "gaptotal": 11,
+                "visitapedidototal": 11
+
+            },
+            {
+                "salesman": "William",
+                "customer": "KCC2",
+                "previsaorealizado": 6,
+                "realizado": 5,
+                "gaprealizado": 10,
+                "visitapedidorealizado": 25,
+                "previsaoarealizar": 11,
+                "visitapedidoarealizar": 11,
+                "previsaototal": 11,
+                "gaptotal": 11,
+                "visitapedidototal": 11
+
+            }, {
+                "salesman": "William",
+                "customer": "KCC3",
+                "previsaorealizado": 6,
+                "realizado": 5,
+                "gaprealizado": 10,
+                "visitapedidorealizado": 25,
+                "previsaoarealizar": 11,
+                "visitapedidoarealizar": 11,
+                "previsaototal": 11,
+                "gaptotal": -110,
+                "visitapedidototal": 11
+
+            }, {
+                "salesman": "José",
+                "customer": "KCC4",
+                "previsaorealizado": 6,
+                "realizado": 5,
+                "gaprealizado": 10,
+                "visitapedidorealizado": 25,
+                "previsaoarealizar": 11,
+                "visitapedidoarealizar": 11,
+                "previsaototal": 11,
+                "gaptotal": 11,
+                "visitapedidototal": 11
+
+            }, {
+                "salesman": "José",
+                "customer": "KCC5",
+                "previsaorealizado": 6,
+                "realizado": 5,
+                "gaprealizado": -5,
+                "visitapedidorealizado": 25,
+                "previsaoarealizar": 11,
+                "visitapedidoarealizar": 11,
+                "previsaototal": 11,
+                "gaptotal": 11,
+                "visitapedidototal": 11
+
+
+            }, {
+                "salesman": "José",
+                "customer": "KCC6",
+                "previsaorealizado": 6,
+                "realizado": 5,
+                "gaprealizado": 10,
+                "visitapedidorealizado": 25,
+                "previsaoarealizar": 11,
+                "visitapedidoarealizar": 11,
+                "previsaototal": 11,
+                "gaptotal": 11,
+                "visitapedidototal": 11
+
+
+            }, {
+                "salesman": "José",
+                "customer": "KCC7",
+                "previsaorealizado": 6,
+                "realizado": 5,
+                "gaprealizado": -100,
+                "visitapedidorealizado": 25,
+                "previsaoarealizar": 11,
+                "visitapedidoarealizar": 11,
+                "previsaototal": 11,
+                "gaptotal": 11,
+                "visitapedidototal": 11
+            }
+
+        );
+
+
+
+        function validate() {
+            for (var i = 0; i < document.getElementsByName("slt_username").length; i++) {
+                alert(document.getElementsByName("slt_username")[i].checked + "-" + document.getElementsByName("slt_username")[i].value);
+            }
+        }
+
+        var expanded = false;
+
+        function showCheckboxes() {
+            var checkboxes = document.getElementById("checkboxes");
+            if (!expanded) {
+                checkboxes.style.display = "block";
+                expanded = true;
+            } else {
+                checkboxes.style.display = "none";
+                expanded = false;
+            }
+        }
+        function divLoadGrid(array, tbodyID) {
+            var ArrayDataFilter = array;
+
+            var table = '';
+            var total;
+            var totalGeral = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+            var salesmans = ArrayDataFilter.map(item => item.salesman).filter(function (value, index, self) {
+                return self.indexOf(value) === index;
+            }).sort();
+
+            salesmans.forEach(salesman => {
+                var group = '';
+                var subTotal = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
+                var arrayGroup = ArrayDataFilter.filter(function (item) { return item.salesman == salesman });
+                $.each(arrayGroup, function (key, value) {
+                    group += '<tr class="detail-' + salesman + ' hidden">';
+                    console.log(value);
+                    $.each(value, function (columKey, columnValue) {
+                        var celcolor = '';
+
+                        if (columKey == 'salesman') return;
+
+                        if (columKey != 'customer' && IsNumeric(columnValue)) {
+                            displayValue = formatNumber(columnValue, 0);
+                            if (columnValue < 0 && columKey.indexOf('gap') >= 0)
+                                celcolor = ' bgcolor="#ff0000"><font color="#fff"';
+                        } else {
+                            displayValue = columnValue;
+                        }
+                        if (columKey == 'customer') {
+                            group += '<td class="detail-cell" colspan="2">' + displayValue + '</td>';
+                        } else {
+                            group += '<td' + celcolor + '>' + displayValue + '</td>';
+                        }
+                    });
+                    celcolor = '';
+
+                    group += '</tr>';
+
+                    subTotal[0] += parseFloat(value['previsaorealizado']);
+                    subTotal[1] += parseFloat(value['realizado']);
+                    subTotal[2] += parseFloat(value['gaprealizado']);
+                    subTotal[3] += parseFloat(value['visitapedidorealizado']);
+                    subTotal[4] += parseFloat(value['previsaoarealizar']);
+                    subTotal[5] += parseFloat(value['visitapedidoarealizar']);
+                    subTotal[6] += parseFloat(value['previsaototal']);
+                    subTotal[7] += parseFloat(value['gaptotal']);
+                    subTotal[8] += parseFloat(value['visitapedidototal']);
+
+                    totalGeral[0] += parseFloat(value['previsaorealizado']);
+                    totalGeral[1] += parseFloat(value['realizado']);
+                    totalGeral[2] += parseFloat(value['gaprealizado']);
+                    totalGeral[3] += parseFloat(value['visitapedidorealizado']);
+                    totalGeral[4] += parseFloat(value['previsaoarealizar']);
+                    totalGeral[5] += parseFloat(value['visitapedidoarealizar']);
+                    totalGeral[6] += parseFloat(value['previsaototal']);
+                    totalGeral[7] += parseFloat(value['gaptotal']);
+                    totalGeral[8] += parseFloat(value['visitapedidototal']);
+
+                });
+                total = '<tr><td id="' + salesman + '" class="xpand">+</td><td class="xpand-exec"><strong>' + salesman + '</strong></td>';
+                for (var i = 0; i < subTotal.length; i++) {
+                    var celcolor = '';
+
+                    if (i < 10 && subTotal[i] < 0)
+                        celcolor = ' bgcolor="#ff0000"><font color="#fff"';
+
+                    total += '<td' + celcolor + '><strong>' + formatNumber(subTotal[i], 0) + '</strong></td>';
+                }
+                total += '</tr>';
+                table += total + group;
+            });
+
+            var finalRow = '<tr class="tr-footer"><td class="td-footer" colspan="2"><strong>Total Geral</strong></td>';
+            for (var i = 0; i < totalGeral.length; i++) {
+                var celcolor = '';
+
+                if (totalGeral[i] < 0)
+                    celcolor = ' bgcolor="#ff0000"';
+
+                finalRow += '<td class="td-footer"' + celcolor + '><strong>' + formatNumber(totalGeral[i], 0) + '</strong></td>';
+            }
+            finalRow += '</tr>';
+            table += finalRow;
+
+            $('#' + tbodyID).html(table);
+        }
+
+        function formatNumber(num, fixed) {
+            var decimalPart;
+            var isNegative = false;
+            var result;
+            if (IsNumeric(num)) {
+                if (num < 0) {
+                    isNegative = true;
+                    num = num * -1;
+                }
+
+                var array = num.toString().split('.');
+                array = array[0].split('');
+
+                var index = -3;
+                while (array.length + index > 0) {
+                    array.splice(index, 0, '.');
+                    index -= 4;
+                }
+
+                if (fixed > 0) {
+                    decimalPart = parseFloat(num).toFixed(fixed).split(".")[1];
+                    result = array.join('') + "," + decimalPart;
+                    if (isNegative) {
+                        result = '-' + result;
+                    }
+                    return result;
+                }
+                result = array.join('');
+                if (isNegative) {
+                    result = '-' + result;
+                }
+                return result;
+            }
+            return num;
+        };
+
+        $(document).ready(function () {
+            divLoadGrid(ArrayDataProviderGrid, 'griddiv');
+
+            $('.xpand').click(function () {
+                var detailClass = '.detail-' + $(this).attr('id');
+
+                if ($(detailClass).first().hasClass('hidden')) {
+                    $(this).text('-');
+                    $(detailClass).removeClass('hidden');
+                } else {
+                    $(this).text('+');
+                    $(detailClass).addClass('hidden');
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <div id="container_table" align="center">
+        <div class="one_wrap" style="width: 100%">
+            <div class="widget">
+                <div class="widget_title_2">
+                    <span>Tabela de Apoio</span>
+                </div>
+                <div class="datagrid" style="width: 100; overflow: auto;">
+                    <table class="table_data">
+                        <thead>
+                            <tr>
+                                <th bgcolor="#5d7b9d" colspan="2">
+                                    <font color="#fff">
+                                </th>
+                                <th bgcolor="#5d7b9d" align="center" colspan="4">
+                                    <font color="#fff">Realizado</th>
+                                <th bgcolor="#5d7b9d" align="center" colspan="2">
+                                    <font color="#fff">A Realizar</th>
+                                <th bgcolor="#5d7b9d" align="center" colspan="3">
+                                    <font color="#fff">Total</th>
+                            </tr>
+                        </thead>
+                        <thead>
+                            <tr>
+                                <th bgcolor="#5d7b9d" colspan="2">
+                                    <font color="#fff">Executivo</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Previsão</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Realizado</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">GAP</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visita de Pedido</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Previsão</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visita de Pedido</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Previsão</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">GAP</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Visita de Pedido</th>
+                            </tr>
+                        </thead>
+                        <tbody id="griddiv" style="width: 100%; height: 100px; background-color: #FFFFFF; overflow: auto;"></tbody>
+                    </table>
+                </div>
+                <div class="widget_legend">
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
