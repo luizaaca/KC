@@ -159,83 +159,34 @@
                     $(this).addClass("selected");
                 }
             });
-
-            // var dataAgrouped = groupBy(ArrayDataProviderChart, function(item) {
-            //     return item.tipo;
-            // });
-            // buildFilter(dataAgrouped, 'filtro_tipo', 'tipo', 'tipo');
-            // divLoadCharts(dataAgrouped);
-            // debugger;
-            // dataAgrouped = groupBy(ArrayDataProviderGrid, function(item) {
-            //     return item.categoria;
-            // });
-            // buildFilter(dataAgrouped, 'filtro_categoria', 'categoria', 'categoria');
-
-            // if (detectmob() == false)
-            //     divLoadGrid(ArrayDataProviderGrid, "griddiv");
-            // else
-            //     document.getElementById("container_table").style.display = 'none';
-
-            // $('select.filtro_tipo').on('change', function(event) {
-
-            //     divLoadCharts(ArrayDataProviderChart);
-            //     if (detectmob() == false)
-            //         divLoadGrid(ArrayDataProviderGrid, "griddiv");
-            //     else
-            //         document.getElementById("container_table").style.display = 'none';
-
-            // });
-            // $('select.filtro_categoria').on('change', function(event) {
-
-            //     divLoadCharts(ArrayDataProviderChart);
-            //     if (detectmob() == false)
-            //         divLoadGrid(ArrayDataProviderGrid, "griddiv");
-            //     else
-            //         document.getElementById("container_table").style.display = 'none';
-
-            // });
         });
-
-        function PrepareData(item) {
-            var tipo = item.tipo;
-            var categoria = item.categoria;
-            var valor = item.valor;
-            var descricao = item.tipo + '-' + item.categoria;
-
-            return {
-                tipo,
-                categoria,
-                valor,
-                descricao
-            };
-        }
 
         function loadData(nivel, typeFilter) {
             if (nivel == selButtom && typeFilter == undefined)
                 nivel = 0;
 
             selButtom = nivel;
-            var dataAgrouped = undefined;
+            var groupedData = undefined;
 
             if (nivel == 1) {
-                dataAgrouped = QueryTotalBrasil.map(PrepareData);
+                groupedData = QueryTotalBrasil;
             } else if (nivel == 2) {
-                dataAgrouped = QueryCRN.map(PrepareData);
+                groupedData = QueryCRN;
             } else if (nivel == 3) {
-                dataAgrouped = QueryGerencia.map(PrepareData);
+                groupedData = QueryGerencia;
             } else {
-                dataAgrouped = ArrayDataProviderChart.map(PrepareData);
+                groupedData = ArrayDataProviderChart;
             }
 
             if (typeFilter == undefined || typeFilter == "Todos") {
-                buildFilterTipo(dataAgrouped.map(i => i.tipo).filter((value, index, self) => self.indexOf(value) === index));
+                buildFilterTipo(groupedData.map(i => i.tipo).filter((value, index, self) => self.indexOf(value) === index));
             } else {
-                dataAgrouped = dataAgrouped.filter(function (item) {
+                groupedData = groupedData.filter(function (item) {
                     return item.tipo == typeFilter;
                 });
             }
 
-            divLoadCharts(dataAgrouped);
+            divLoadCharts(groupBy(groupedData, i => i.categoria));
             divLoadGrid(ArrayDataProviderGrid, "griddiv");
         }
 
@@ -247,17 +198,14 @@
                 groups[group].push(o);
             });
             return Object.keys(groups).map(function (group) {
-                var tipo;
                 var categoria;
                 var valor = 0;
 
                 groups[group].forEach(function (value) {
-                    tipo = value.tipo;
                     categoria = value.categoria
                     valor += value.valor;
                 });
                 return {
-                    tipo,
                     categoria,
                     valor
                 };
@@ -288,17 +236,6 @@
         function divLoadCharts(array) {
             var ArrayDataFilter = array;
 
-            //    debugger;
-            $filtro_tipo = $("#filtro_tipo").val();
-
-            if ($filtro_tipo != 'Todos') {
-                ArrayDataFilter = filterWithLoop(ArrayDataFilter, 'tipo', $filtro_tipo);
-            }
-
-            // var ArrayDataFilter = groupBy(ArrayDataFilter,
-            //     function (item) {
-            //         return item.tipo;
-            //     });
 
             AmCharts.makeChart("chartdiv",
                 {
@@ -310,9 +247,9 @@
                     "pieY": "50%",
                     "radius": "0%",
                     "startAngle": 82.8,
-                    "accessibleLabel": "[[title]]: [[valor]] [[descricao]]",
+                    "accessibleLabel": "[[title]]: [[valor]] [[categoria]]",
                     "tabIndex": 3,
-                    "titleField": "descricao",
+                    "titleField": "categoria",
                     "valueField": "valor",
                     "allLabels": [],
                     "balloon": {},
