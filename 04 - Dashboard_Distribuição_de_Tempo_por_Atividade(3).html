@@ -320,8 +320,6 @@
                 $.each(value, function (key, value) {
                     var celcolor = '';
 
-                    displayValue = value;
-
                     if (key == 'atividade')
                         celcolor = 'style="font-weight:bold"';
 
@@ -330,20 +328,7 @@
 
                 table = table + '</tr>';
 
-            });
-            for (var i = 0; i < totalGeral.length; i++) {
-                var celcolor = '';
-                if (i < 3) {
-                    if (totalGeral[i] == 0)
-                        celcolor = ' bgcolor="#fff000"';
-                    else if (totalGeral[i] < 0)
-                        celcolor = ' bgcolor="#ff0000"><font color="#fff"';
-                    else
-                        celcolor = ' bgcolor="#66ff00"';
-                }
-                table += '<td' + celcolor + '><strong>' + formatNumber(totalGeral[i], 0) + '</strong></td>';
-            }
-            table += '</tr>';
+            });            
             $('#' + tbodyID).html(table);
         }
 
