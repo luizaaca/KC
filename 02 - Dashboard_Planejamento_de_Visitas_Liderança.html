@@ -24,7 +24,43 @@
     <script src="./js/MC1Lib.js" type="text/javascript"></script>
     <script src="./js/gauge.js" type="text/javascript"></script>
 
+    <style>
+        .th-head {
+            background-color: #7D7D7D !important;
+            color: #FFFFFF !important;
+        }
 
+        .tr-footer {
+            background-color: #7D7D7D !important;
+            text-transform: uppercase;
+        }
+
+        .td-footer {
+            color: #FFFFFF !important;
+            font-size: 14px !important;
+        }
+
+        .xpand {
+            padding-right: 5px !important;
+            white-space: nowrap;
+            width: 10px;
+            font-size: 18px !important;
+            cursor: pointer;
+        }
+
+        .xpand-exec {
+            padding-left: 0 !important;
+            border-left: 0 !important;
+        }
+
+        .detail-cell {
+            padding-left: 25px !important;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
     <!--
 		<style> 
 			#scrolly{
@@ -428,6 +464,18 @@
                 loadData(selButtom, $('select.filtro_subcategoria').val());
             });
 
+            $('.xpand').click(function () {
+                var detailClass = '.detail-' + $(this).attr('id');
+
+                if ($(detailClass).first().hasClass('hidden')) {
+                    $(this).text('-');
+                    $(detailClass).removeClass('hidden');
+                } else {
+                    $(this).text('+');
+                    $(detailClass).addClass('hidden');
+                }
+            });
+
             $("a").click(function () {
                 var selected = $(this).hasClass("selected");
 
@@ -470,13 +518,13 @@
                     naoprogramada
                 };
             });
-            
+
             return result.map(o => {
                 var description = o.description;
                 var programada = o.programada;
                 var naoprogramada = o.naoprogramada;
                 var description_total = description + '<br>' + (o.programada + o.naoprogramada);
-                
+
                 return {
                     description,
                     programada,
@@ -581,7 +629,7 @@
             var v_count = 0;
 
             if (select_option == "filtro_subcategoria")
-                v_option += '<option value="Todos" selected>SubCategoria</option>';
+                v_option += '<option value="Todos" selected>Tipo de Visita</option>';
             else
                 v_option += '<option value="Todos" selected>Cliente</option>';
 
@@ -694,7 +742,7 @@
                 var arrayGroup = ArrayDataFilter.filter(function (item) { return item.owner == owner });
                 $.each(groupByToGrid(arrayGroup, i => i.customer),
                     function (key, value) {
-                        group += '<tr>';
+                        group += '<tr class="detail-' + owner + ' hidden">';
                         $.each(value, function (columKey, columnValue) {
                             var celcolor = '';
 
@@ -713,7 +761,11 @@
                             } else {
                                 displayValue = columnValue;
                             }
-                            group += '<td' + celcolor + '>' + displayValue + '</td>';
+                            if (columKey == 'customer') {
+                                group += '<td class="detail-cell" colspan="2">' + displayValue + '</td>';
+                            } else {
+                                group += '<td' + celcolor + '>' + displayValue + '</td>';
+                            }
                         });
                         group += '</tr>';
                         totalGeral[0] += parseFloat(value['dpsmrecomendada']);
@@ -726,7 +778,7 @@
                         totalGeral[7] += parseFloat(value['pedneggap']);
 
                     });
-                total = '<tr><td><strong>' + owner + '</strong></td>';
+                total = '<tr><td id="' + owner + '" class="xpand">+</td><td class="xpand-exec"><strong>' + owner + '</strong></td>';
                 for (var i = 0; i < totalGeral.length; i++) {
                     var celcolor = '';
 
@@ -838,12 +890,12 @@
                     <table class="table_data">
                         <thead>
                             <tr>
-                                <th class="tg-us36"></th>
+                                <th class="tg-us36" colspan="2"></th>
                                 <th class="tg-c3ow" colspan="4" align="center">DPSM</th>
                                 <th class="tg-c3ow" colspan="4" align="center">Pedido + Negociação</th>
                             </tr>
                             <tr>
-                                <th bgcolor="#5d7b9d">
+                                <th bgcolor="#5d7b9d" colspan="2">
                                     <font color="#fff">Executivo</th>
                                 <!--<td class="tg-us36">Executivo</td>-->
                                 <th bgcolor="#5d7b9d">
