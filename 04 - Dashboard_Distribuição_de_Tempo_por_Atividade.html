@@ -27,6 +27,8 @@
 
     <script type="text/javascript">
         // <!--var ArrayDataProvider = [[mc1_l:WTM_META_DE_VENDA]];-->
+        var perfil = 'gerente';
+
         var ArrayDataProviderChart = new Array(
             {
                 "tipo": "Planejado",
@@ -192,6 +194,22 @@
             selButtom = nivel;
             var groupedData = undefined;
 
+            if (perfil == "presidente") {
+                $('#btn_totalbrasil').hide();
+                $('#btn_crn').hide();
+                $('#btn_gerencia').hide();
+                nivel = 1;
+            } else if (perfil == "crn") {
+                $('#btn_crn').hide();
+                $('#btn_gerencia').hide();
+                if (nivel == 0)
+                    nivel = 2;
+            } else if (perfil == "gerente") {
+                $('#btn_gerencia').hide();
+                if (nivel == 0)
+                    nivel = 3;
+            }
+
             if (nivel == 1) {
                 groupedData = QueryTotalBrasil;
             } else if (nivel == 2) {
@@ -328,7 +346,7 @@
 
                 table = table + '</tr>';
 
-            });            
+            });
             $('#' + tbodyID).html(table);
         }
 
@@ -385,9 +403,9 @@
                             </td>
                             <td>
                                 <div class="categ1">
-                                    <a class="chang-bt nivel_btn" href="javascript:loadData(1)">Total Brasil</a>
-                                    <a class="chang-bt nivel_btn" href="javascript:loadData(2)">CRN</a>
-                                    <a class="chang-bt nivel_btn" href="javascript:loadData(3)">Gerência</a>
+                                    <a id="btn_totalbrasil" class="chang-bt nivel_btn" href="javascript:loadData(1)">Total Brasil</a>
+                                    <a id="btn_crn" class="chang-bt nivel_btn" href="javascript:loadData(2)">CRN</a>
+                                    <a id="btn_gerencia" class="chang-bt nivel_btn" href="javascript:loadData(3)">Gerência</a>
                                 </div>
                             </td>
                         </tr>

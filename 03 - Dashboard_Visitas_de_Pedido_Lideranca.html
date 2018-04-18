@@ -24,7 +24,44 @@
     <script src="./js/MC1Lib.js" type="text/javascript"></script>
     <script src="./js/gauge.js" type="text/javascript"></script>
 
+    <style>
+        .th-head {
+            background-color: #7D7D7D !important;
+            color: #FFFFFF !important;
+        }
 
+        .tr-footer {
+            background-color: #7D7D7D !important;
+            text-transform: uppercase;
+        }
+
+        .td-footer {
+            color: #FFFFFF !important;
+            font-size: 14px !important;
+        }
+
+        .xpand {
+            padding-right: 5px !important;
+            white-space: nowrap;
+            width: 10px;
+            font-size: 18px !important;
+            cursor: pointer;
+        }
+
+        .xpand-exec {
+            padding-left: 0 !important;
+            border-left: 0 !important;
+        }
+
+        .detail-cell {
+            padding-left: 25px !important;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+    </style>
     <!--
 		<style> 
 			#scrolly{
@@ -71,6 +108,8 @@
 
     <script type="text/javascript">
         // <!--var ArrayDataProvider = [[mc1_l:WTM_META_DE_VENDA]];-->
+        var perfil = 'gerente';
+
         var ArrayDataProviderChart = new Array(
             {
                 "pedido": "Com Pedido",
@@ -378,18 +417,21 @@
 
         var ArrayDataProviderGrid = new Array(
             {
+                "salesman": "Mimoto",
                 "customer": "KCC",
                 "tipo": "Visitas de Pedido",
-                "compedido": 81,
+                "compedido": 83,
                 "sempedido": 50,
                 "visita": "Não Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC1",
                 "tipo": "Visitas de Pedido",
                 "compedido": 81,
                 "sempedido": 50,
                 "visita": "Não Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC2",
                 "tipo": "Visitas de Pedido",
                 "compedido": 81,
@@ -397,18 +439,87 @@
                 "visita": "Programada"
             },
             {
+                "salesman": "Mimoto",
                 "customer": "KCC",
                 "tipo": "Visitas à Loja (DPSM)",
                 "compedido": 50,
                 "sempedido": 40,
                 "visita": "Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC1",
                 "tipo": "Visitas à Loja (DPSM)",
                 "compedido": 15,
                 "sempedido": 10,
                 "visita": "Não Programada"
             }, {
+                "salesman": "Mimoto",
+                "customer": "KCC2",
+                "tipo": "Visitas à Loja (DPSM)",
+                "compedido": 30,
+                "sempedido": 81,
+                "visita": "Não Programada"
+            },
+            {
+                "salesman": "Mimoto",
+                "customer": "KCC",
+                "tipo": "Visitas de Negociação",
+                "compedido": 52,
+                "sempedido": 77,
+                "visita": "Não Programada"
+            }, {
+                "salesman": "Mimoto",
+                "customer": "KCC1",
+                "tipo": "Visitas de Negociação",
+                "compedido": 22,
+                "sempedido": 35,
+                "visita": "Programada"
+            }, {
+                "salesman": "Mimoto",
+                "customer": "KCC2",
+                "tipo": "Visitas de Negociação",
+                "compedido": 35,
+                "sempedido": 55,
+                "visita": "Programada"
+            },
+            {
+                "salesman": "João",
+                "customer": "KCC",
+                "tipo": "Visitas de Pedido",
+                "compedido": 81,
+                "sempedido": 50,
+                "visita": "Não Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC1",
+                "tipo": "Visitas de Pedido",
+                "compedido": 81,
+                "sempedido": 50,
+                "visita": "Não Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC2",
+                "tipo": "Visitas de Pedido",
+                "compedido": 81,
+                "sempedido": 50,
+                "visita": "Programada"
+            },
+            {
+                "salesman": "João",
+                "customer": "KCC",
+                "tipo": "Visitas à Loja (DPSM)",
+                "compedido": 50,
+                "sempedido": 40,
+                "visita": "Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC1",
+                "tipo": "Visitas à Loja (DPSM)",
+                "compedido": 15,
+                "sempedido": 10,
+                "visita": "Não Programada"
+            }, {
+                "salesman": "João",
                 "customer": "KCC2",
                 "tipo": "Visitas à Loja (DPSM)",
                 "compedido": 30,
@@ -416,18 +527,21 @@
                 "visita": "Não Programada"
             },
             {
+                "salesman": "João",
                 "customer": "KCC",
                 "tipo": "Visitas de Negociação",
                 "compedido": 52,
                 "sempedido": 77,
                 "visita": "Não Programada"
             }, {
+                "salesman": "João",
                 "customer": "KCC1",
                 "tipo": "Visitas de Negociação",
                 "compedido": 22,
                 "sempedido": 35,
                 "visita": "Programada"
             }, {
+                "salesman": "João",
                 "customer": "KCC2",
                 "tipo": "Visitas de Negociação",
                 "compedido": 35,
@@ -437,136 +551,289 @@
         );
         var ArrayDataProviderGridTotalBrasil = new Array(
             {
+                "salesman": "Mimoto",
                 "customer": "KCC",
                 "tipo": "Visitas de Pedido",
                 "compedido": 81,
                 "sempedido": 50,
                 "visita": "Não Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC1",
                 "tipo": "Visitas de Pedido",
                 "compedido": 81,
                 "sempedido": 50,
                 "visita": "Não Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC2",
                 "tipo": "Visitas de Pedido",
                 "compedido": 81,
                 "sempedido": 50,
-                "visita": "Não Programada"
+                "visita": "Programada"
             },
             {
+                "salesman": "Mimoto",
                 "customer": "KCC",
                 "tipo": "Visitas à Loja (DPSM)",
                 "compedido": 50,
                 "sempedido": 40,
                 "visita": "Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC1",
                 "tipo": "Visitas à Loja (DPSM)",
                 "compedido": 15,
                 "sempedido": 10,
                 "visita": "Não Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC2",
                 "tipo": "Visitas à Loja (DPSM)",
                 "compedido": 30,
                 "sempedido": 80,
-                "visita": "Programada"
+                "visita": "Não Programada"
             },
             {
+                "salesman": "Mimoto",
                 "customer": "KCC",
                 "tipo": "Visitas de Negociação",
                 "compedido": 52,
                 "sempedido": 77,
-                "visita": "Programada"
+                "visita": "Não Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC1",
                 "tipo": "Visitas de Negociação",
                 "compedido": 22,
                 "sempedido": 35,
-                "visita": "Não Programada"
+                "visita": "Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC2",
                 "tipo": "Visitas de Negociação",
                 "compedido": 35,
                 "sempedido": 55,
+                "visita": "Programada"
+            },
+            {
+                "salesman": "João",
+                "customer": "KCC",
+                "tipo": "Visitas de Pedido",
+                "compedido": 81,
+                "sempedido": 50,
                 "visita": "Não Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC1",
+                "tipo": "Visitas de Pedido",
+                "compedido": 81,
+                "sempedido": 50,
+                "visita": "Não Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC2",
+                "tipo": "Visitas de Pedido",
+                "compedido": 81,
+                "sempedido": 50,
+                "visita": "Programada"
+            },
+            {
+                "salesman": "João",
+                "customer": "KCC",
+                "tipo": "Visitas à Loja (DPSM)",
+                "compedido": 50,
+                "sempedido": 40,
+                "visita": "Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC1",
+                "tipo": "Visitas à Loja (DPSM)",
+                "compedido": 15,
+                "sempedido": 10,
+                "visita": "Não Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC2",
+                "tipo": "Visitas à Loja (DPSM)",
+                "compedido": 30,
+                "sempedido": 80,
+                "visita": "Não Programada"
+            },
+            {
+                "salesman": "João",
+                "customer": "KCC",
+                "tipo": "Visitas de Negociação",
+                "compedido": 52,
+                "sempedido": 77,
+                "visita": "Não Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC1",
+                "tipo": "Visitas de Negociação",
+                "compedido": 22,
+                "sempedido": 35,
+                "visita": "Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC2",
+                "tipo": "Visitas de Negociação",
+                "compedido": 35,
+                "sempedido": 55,
+                "visita": "Programada"
             }
         );
         var ArrayDataProviderGridCRN = new Array(
             {
+                "salesman": "Mimoto",
                 "customer": "KCC",
                 "tipo": "Visitas de Pedido",
                 "compedido": 81,
                 "sempedido": 50,
                 "visita": "Não Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC1",
                 "tipo": "Visitas de Pedido",
                 "compedido": 81,
                 "sempedido": 50,
                 "visita": "Não Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC2",
                 "tipo": "Visitas de Pedido",
                 "compedido": 81,
                 "sempedido": 50,
-                "visita": "Não Programada"
+                "visita": "Programada"
             },
             {
+                "salesman": "Mimoto",
                 "customer": "KCC",
                 "tipo": "Visitas à Loja (DPSM)",
                 "compedido": 50,
                 "sempedido": 40,
-                "visita": "Não Programada"
+                "visita": "Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC1",
                 "tipo": "Visitas à Loja (DPSM)",
                 "compedido": 15,
                 "sempedido": 10,
-                "visita": "Programada"
+                "visita": "Não Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC2",
                 "tipo": "Visitas à Loja (DPSM)",
                 "compedido": 30,
                 "sempedido": 80,
-                "visita": "Programada"
+                "visita": "Não Programada"
             },
             {
+                "salesman": "Mimoto",
                 "customer": "KCC",
                 "tipo": "Visitas de Negociação",
                 "compedido": 52,
                 "sempedido": 77,
                 "visita": "Não Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC1",
                 "tipo": "Visitas de Negociação",
                 "compedido": 22,
                 "sempedido": 35,
-                "visita": "Não Programada"
+                "visita": "Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC2",
                 "tipo": "Visitas de Negociação",
                 "compedido": 35,
                 "sempedido": 55,
+                "visita": "Programada"
+            },
+            {
+                "salesman": "João",
+                "customer": "KCC",
+                "tipo": "Visitas de Pedido",
+                "compedido": 81,
+                "sempedido": 50,
                 "visita": "Não Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC1",
+                "tipo": "Visitas de Pedido",
+                "compedido": 81,
+                "sempedido": 50,
+                "visita": "Não Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC2",
+                "tipo": "Visitas de Pedido",
+                "compedido": 81,
+                "sempedido": 50,
+                "visita": "Programada"
+            },
+            {
+                "salesman": "João",
+                "customer": "KCC",
+                "tipo": "Visitas à Loja (DPSM)",
+                "compedido": 50,
+                "sempedido": 40,
+                "visita": "Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC1",
+                "tipo": "Visitas à Loja (DPSM)",
+                "compedido": 15,
+                "sempedido": 10,
+                "visita": "Não Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC2",
+                "tipo": "Visitas à Loja (DPSM)",
+                "compedido": 30,
+                "sempedido": 80,
+                "visita": "Não Programada"
+            },
+            {
+                "salesman": "João",
+                "customer": "KCC",
+                "tipo": "Visitas de Negociação",
+                "compedido": 52,
+                "sempedido": 77,
+                "visita": "Não Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC1",
+                "tipo": "Visitas de Negociação",
+                "compedido": 22,
+                "sempedido": 35,
+                "visita": "Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC2",
+                "tipo": "Visitas de Negociação",
+                "compedido": 35,
+                "sempedido": 55,
+                "visita": "Programada"
             }
         );
         var ArrayDataProviderGridGerencia = new Array(
             {
+                "salesman": "Mimoto",
                 "customer": "KCC",
                 "tipo": "Visitas de Pedido",
                 "compedido": 81,
                 "sempedido": 50,
                 "visita": "Não Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC1",
                 "tipo": "Visitas de Pedido",
                 "compedido": 81,
                 "sempedido": 50,
                 "visita": "Não Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC2",
                 "tipo": "Visitas de Pedido",
                 "compedido": 81,
@@ -574,42 +841,114 @@
                 "visita": "Programada"
             },
             {
+                "salesman": "Mimoto",
                 "customer": "KCC",
                 "tipo": "Visitas à Loja (DPSM)",
                 "compedido": 50,
                 "sempedido": 40,
                 "visita": "Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC1",
                 "tipo": "Visitas à Loja (DPSM)",
                 "compedido": 15,
                 "sempedido": 10,
-                "visita": "Programada"
+                "visita": "Não Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC2",
                 "tipo": "Visitas à Loja (DPSM)",
                 "compedido": 30,
                 "sempedido": 80,
-                "visita": "Programada"
+                "visita": "Não Programada"
             },
             {
+                "salesman": "Mimoto",
                 "customer": "KCC",
                 "tipo": "Visitas de Negociação",
                 "compedido": 52,
                 "sempedido": 77,
                 "visita": "Não Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC1",
                 "tipo": "Visitas de Negociação",
                 "compedido": 22,
                 "sempedido": 35,
-                "visita": "Não Programada"
+                "visita": "Programada"
             }, {
+                "salesman": "Mimoto",
                 "customer": "KCC2",
                 "tipo": "Visitas de Negociação",
                 "compedido": 35,
                 "sempedido": 55,
+                "visita": "Programada"
+            },
+            {
+                "salesman": "João",
+                "customer": "KCC",
+                "tipo": "Visitas de Pedido",
+                "compedido": 81,
+                "sempedido": 50,
                 "visita": "Não Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC1",
+                "tipo": "Visitas de Pedido",
+                "compedido": 81,
+                "sempedido": 50,
+                "visita": "Não Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC2",
+                "tipo": "Visitas de Pedido",
+                "compedido": 81,
+                "sempedido": 50,
+                "visita": "Programada"
+            },
+            {
+                "salesman": "João",
+                "customer": "KCC",
+                "tipo": "Visitas à Loja (DPSM)",
+                "compedido": 50,
+                "sempedido": 40,
+                "visita": "Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC1",
+                "tipo": "Visitas à Loja (DPSM)",
+                "compedido": 15,
+                "sempedido": 10,
+                "visita": "Não Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC2",
+                "tipo": "Visitas à Loja (DPSM)",
+                "compedido": 30,
+                "sempedido": 80,
+                "visita": "Não Programada"
+            },
+            {
+                "salesman": "João",
+                "customer": "KCC",
+                "tipo": "Visitas de Negociação",
+                "compedido": 52,
+                "sempedido": 77,
+                "visita": "Não Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC1",
+                "tipo": "Visitas de Negociação",
+                "compedido": 22,
+                "sempedido": 35,
+                "visita": "Programada"
+            }, {
+                "salesman": "João",
+                "customer": "KCC2",
+                "tipo": "Visitas de Negociação",
+                "compedido": 35,
+                "sempedido": 55,
+                "visita": "Programada"
             }
         );
 
@@ -638,23 +977,17 @@
             });
         });
 
-        function PrepareData(item) {
-            var tipo = item.tipo;
-            var pedido = item.pedido;
-            var qtde = item.qtde;
-            var customer = item.customer;
-            var visita = item.visita;
-            var descricao = item.pedido + '-' + item.customer;
+        function showDetail(salesman) {
+            var detailClass = '.detail-' + salesman;
 
-            return {
-                tipo,
-                pedido,
-                qtde,
-                customer,
-                visita,
-                descricao
-            };
-        }
+            if ($(detailClass).first().hasClass('hidden')) {
+                $(this).text('-');
+                $(detailClass).removeClass('hidden');
+            } else {
+                $(this).text('+');
+                $(detailClass).addClass('hidden');
+            }
+        };
 
         var conditions = [undefined, "Todos"];
         function loadData(nivel, typeFilter, visitFilter) {
@@ -664,6 +997,22 @@
             selButtom = nivel;
             var groupedData = undefined;
             var groupedDataGrid = undefined;
+
+            if (perfil == "presidente") {
+                $('#btn_totalbrasil').hide();
+                $('#btn_crn').hide();
+                $('#btn_gerencia').hide();
+                nivel = 1;
+            } else if (perfil == "crn") {
+                $('#btn_crn').hide();
+                $('#btn_gerencia').hide();
+                if (nivel == 0)
+                    nivel = 2;
+            } else if (perfil == "gerente") {
+                $('#btn_gerencia').hide();
+                if (nivel == 0)
+                    nivel = 3;
+            }
 
             if (nivel == 1) {
                 groupedData = ArrayDataProviderChartTotalBrasil;
@@ -694,7 +1043,7 @@
             }
 
             divLoadCharts(groupBy(groupedData, i => i.pedido));
-            divLoadGrid(groupByToGrid(groupedDataGrid, i => i.customer), "griddiv");
+            divLoadGrid(groupedDataGrid, "griddiv");
         }
 
         function groupByToGrid(array, f) {
@@ -829,62 +1178,73 @@
             }
         }
         function divLoadGrid(array, tbodyID) {
-            var totalGeral = new Array(0, 0);
-            var ArrayDataFilter = array;
-
             var table = '';
-            $.each(ArrayDataFilter, function (key, value) {
-                table = table + '<tr>';
+            var total;
+            var totalGeral = new Array(0, 0);
 
-                /* utilizado para colocar cor da linha intercalada entre cinza e branco
-                if ((key % 2) == 0) {
-                    table = table + '<tr class="alt">';
-                }
-                else {
-                    table = table + '<tr class="alt1">';
-                }
-                */
-                var col = 0;
-                $.each(value, function (key, value) {
+            var salesmans = array.map(item => item.salesman).filter(function (value, index, self) {
+                return self.indexOf(value) === index;
+            }).sort();
+
+            function compare(a, b) {
+                if (a.customer < b.customer)
+                    return -1;
+                if (a.customer > b.customer)
+                    return 1;
+                return 0;
+            }
+            salesmans.forEach(salesman => {
+                var group = '';
+                var subTotal = new Array(0, 0);
+                var arrayGroup = array.filter(function (item) { return item.salesman == salesman });
+                $.each(groupByToGrid(arrayGroup, i => i.customer).sort(compare), function (key, value) {
+                    group += '<tr class="detail-' + salesman + ' hidden">';
+                    $.each(value, function (key, value) {
+                        var celcolor = '';
+
+                        if (IsNumeric(value)) {
+                            displayValue = formatNumber(value, 0);
+                        } else {
+                            displayValue = value;
+                        }
+
+                        if (key == 'customer') {
+                            group += '<td class="detail-cell" colspan="2">' + displayValue + '</td>';
+                        } else {
+                            group += '<td' + celcolor + '>' + displayValue + '</td>';
+                        }
+                    });
+                    group += '</tr>';
+
+                    subTotal[0] += parseFloat(value['compedido']);
+                    subTotal[1] += parseFloat(value['sempedido']);
+
+                    totalGeral[0] += parseFloat(value['compedido']);
+                    totalGeral[1] += parseFloat(value['sempedido']);
+                });
+                total = '<tr><td id="' + salesman + '" class="xpand" onclick="showDetail(\'' + salesman + '\')" >+</td><td class="xpand-exec"><strong>' + salesman + '</strong></td>';
+                for (var i = 0; i < subTotal.length; i++) {
                     var celcolor = '';
 
-                    if (key == 'tipo')
-                        return;
+                    if (i < 10 && subTotal[i] < 0)
+                        celcolor = ' bgcolor="#ff0000"><font color="#fff"';
 
-                    if (IsNumeric(value)) {
-                        displayValue = formatNumber(value, 0);
-                        if (col > 0 && col < 0) {
-                            if (value == 0)
-                                celcolor = ' bgcolor="#fff000"';
-                            else if (value < 0)
-                                celcolor = ' bgcolor="#fff000"><font color="#fff"';
-                            else
-                                celcolor = ' bgcolor="#fff000"';
-                        }
-                    } else {
-                        displayValue = value;
-                    }
-                    table = table + '<td' + celcolor + '>' + formatNumber(value, 0) + '</td>';
-                    col++;
-                });
-                table = table + '</tr>';
-                totalGeral[0] += parseFloat(value['compedido']);
-                totalGeral[1] += parseFloat(value['sempedido']);
+                    total += '<td' + celcolor + '><strong>' + formatNumber(subTotal[i], 0) + '</strong></td>';
+                }
+                total += '</tr>';
+                table += total + group;
             });
-            table += '<tr><td><strong>Total Geral</strong></td>';
+            var finalRow = '<tr class="tr-footer"><td class="td-footer" colspan="2"><strong>Total Geral</strong></td>';
             for (var i = 0; i < totalGeral.length; i++) {
                 var celcolor = '';
-                if (i < 0) {
-                    if (totalGeral[i] == 0)
-                        celcolor = ' bgcolor="#fff000"';
-                    else if (totalGeral[i] < 0)
-                        celcolor = ' bgcolor="#fff000"><font color="#fff"';
-                    else
-                        celcolor = ' bgcolor="#fff000"';
-                }
-                table += '<td' + celcolor + '><strong>' + formatNumber(totalGeral[i], 0) + '</strong></td>';
+
+                if (totalGeral[i] < 0)
+                    celcolor = ' bgcolor="#ff0000"';
+
+                finalRow += '<td class="td-footer"' + celcolor + '><strong>' + formatNumber(totalGeral[i], 0) + '</strong></td>';
             }
-            table += '</tr>';
+            finalRow += '</tr>';
+            table += finalRow;
             $('#' + tbodyID).html(table);
         }
 
@@ -942,9 +1302,9 @@
                             </td>
                             <td>
                                 <div class="categ1">
-                                    <a class="chang-bt nivel_btn" href="javascript:loadData(1)">Total Brasil</a>
-                                    <a class="chang-bt nivel_btn" href="javascript:loadData(2)">CRN</a>
-                                    <a class="chang-bt nivel_btn" href="javascript:loadData(3)">Gerência</a>
+                                    <a id="btn_totalbrasil" class="chang-bt nivel_btn" href="javascript:loadData(1)">Total Brasil</a>
+                                    <a id="btn_crn" class="chang-bt nivel_btn" href="javascript:loadData(2)">CRN</a>
+                                    <a id="btn_gerencia" class="chang-bt nivel_btn" href="javascript:loadData(3)">Gerência</a>
                                 </div>
                             </td>
                         </tr>
@@ -985,7 +1345,7 @@
                     <table class="table_data">
                         <thead>
                             <tr>
-                                <th bgcolor="#5d7b9d">
+                                <th bgcolor="#5d7b9d" colspan="2">
                                     <font color="#fff">Executivo</th>
                                 <!--<td class="tg-us36">Executivo</td>-->
                                 <th bgcolor="#5d7b9d">
