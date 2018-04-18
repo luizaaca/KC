@@ -106,7 +106,10 @@
                 var group = f(o);
 
                 var newgroup = groups[group];
-                groups[group] = groups[group] || [];
+                
+                if (!groups[group])
+					groups[group] = [];
+
                 groups[group].push(o);
             });
             return Object.keys(groups).map(function (group) {

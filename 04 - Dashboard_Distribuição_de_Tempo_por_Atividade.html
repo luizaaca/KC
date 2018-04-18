@@ -178,7 +178,7 @@
                 groupedData = ArrayDataProviderChart;
             }
 
-            if (typeFilter == undefined || typeFilter == "Todos") {
+            if (!(typeFilter != undefined && typeFilter != "Todos")) {
                 buildFilterTipo(groupedData.map(i => i.tipo).filter((value, index, self) => self.indexOf(value) === index));
             } else {
                 groupedData = groupedData.filter(function (item) {
@@ -194,7 +194,10 @@
             var groups = {};
             array.forEach(function (o) {
                 var group = f(o);
-                groups[group] = groups[group] || [];
+                
+                if (!groups[group])
+					groups[group] = [];
+
                 groups[group].push(o);
             });
             return Object.keys(groups).map(function (group) {

@@ -116,7 +116,9 @@
 				});
 			}
 
-			if (categoryFilter == undefined || categoryFilter == "Todos") {
+			if (categoryFilter == undefined) {
+				buildFilter(dataAgroupedbyProduct, 'filtro_subcategoria', 'description', 'description');
+			} else if (categoryFilter == "Todos") {
 				buildFilter(dataAgroupedbyProduct, 'filtro_subcategoria', 'description', 'description');
 			} else {
 				dataAgroupedbyProduct = dataAgroupedbyProduct.filter(function (item) {
@@ -290,7 +292,8 @@
 				$.each(value, function (key, value) {
 					var cellcolor = '';
 					var displayValue = '';
-					if (key == 'customer' || key == 'crn' || key == 'gerencia' || key == 'carteira' || key == 'meta' || key == 'faturamento')
+
+					if (['customer', 'crn', 'gerencia', 'carteira', 'meta', 'faturamento'].indexOf(key) >= 0)
 						return;
 
 					if (IsNumeric(value)) {
@@ -378,8 +381,9 @@
 			array.forEach(function (o) {
 				var group = f(o);
 
-				var newgroup = groups[group];
-				groups[group] = groups[group] || [];
+				if (!groups[group])
+					groups[group] = [];
+
 				groups[group].push(o);
 			});
 			return Object.keys(groups).map(function (group) {

@@ -454,7 +454,10 @@
             var groups = {};
             array.forEach(function (o) {
                 var group = f(o);
-                groups[group] = groups[group] || [];
+
+                if (!groups[group])
+                    groups[group] = [];
+
                 groups[group].push(o);
             });
             return Object.keys(groups).map(function (group) {
@@ -483,7 +486,10 @@
             var groups = {};
             array.forEach(function (o) {
                 var group = f(o);
-                groups[group] = groups[group] || [];
+                
+                if (!groups[group])
+					groups[group] = [];
+
                 groups[group].push(o);
             });
             return Object.keys(groups).map(function (group) {
@@ -548,7 +554,7 @@
                 });
             }
 
-            if (categoryFilter == undefined || categoryFilter == "Todos") {
+            if (!(categoryFilter != undefined && categoryFilter != "Todos")) {
                 buildFilter(dataAgroupedbyProduct, 'filtro_subcategoria', 'description', 'description');
             } else {
                 dataAgroupedbyProduct = dataAgroupedbyProduct.filter(function (item) {
@@ -693,7 +699,7 @@
 
                             if (IsNumeric(columnValue)) {
                                 displayValue = formatNumber(columnValue, 0);
-                                if (columKey == "dpsmgap" || columKey == "pedneggap") {
+                                if (!(columKey != "dpsmgap" && columKey != "pedneggap")) {
                                     if (columnValue < 0)
                                         celcolor = ' bgcolor="#ff0000"><font color="#fff"';
                                     // else if (value < 0)
