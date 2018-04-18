@@ -136,9 +136,33 @@
                 //"tipo": "Externas",
                 "atividade": "Visita Pedido",
                 "texto": "Visita ao cliente, que tem como objetivo negociar um ou mais pedidos."
+            });
+        var ArrayDataProviderGrid2 = new Array
+            ({
+                //"tipo": "Internas",
+                "atividade": "Planejamento",
+                "texto": "Atividades relacionadas ao planejamento da rotina. Exemplos: Planejamento do calendário."
             },
-
-        );
+            {
+                //"tipo": "Internas",
+                "atividade": "Análises Internas",
+                "texto": "Análise de dados cliente e planejamento de vendas. Exemplos: alinhamento de volumes com gestor, análise dados clientes, análise TEMPOS, análise Tool Set."
+            },
+            {
+                //"tipo": "Internas",
+                "atividade": "Análises Diversas",
+                "texto": "Atividades dedicadas a remuneração, despesas e pagamentos. Exemplos: análise simulador variável, KCP&D, RDD."
+            },
+            {
+                //"tipo": "Externas",
+                "atividade": "Visita Negociação",
+                "texto": "Visita ao cliente, que tem como objetivo de negociar planos, campanhas, preços, investimentos, parâmetros de loja, entre outros."
+            },
+            {
+                //"tipo": "Externas",
+                "atividade": "Visita Pedido",
+                "texto": "Visita ao cliente, que tem como objetivo negociar um ou mais pedidos."
+            });
         var selButtom = undefined;
 
         $(document).ready(function () {
@@ -188,15 +212,16 @@
 
             divLoadCharts(groupBy(groupedData, i => i.categoria));
             divLoadGrid(ArrayDataProviderGrid, "griddiv");
+            divLoadGrid(ArrayDataProviderGrid2, "griddiv2");
         }
 
         function groupBy(array, f) {
             var groups = {};
             array.forEach(function (o) {
                 var group = f(o);
-                
+
                 if (!groups[group])
-					groups[group] = [];
+                    groups[group] = [];
 
                 groups[group].push(o);
             });
@@ -289,60 +314,21 @@
             var totalGeral = new Array();
             var ArrayDataFilter = array;
 
-            $filtro_subcategoria = $("#filtro_subcategoria").val();
-            if ($filtro_subcategoria != 'Todos')
-                ArrayDataFilter = filterWithLoop(array, 'descricao', $filtro_subcategoria);
-
-
             var table = '';
             $.each(ArrayDataFilter, function (key, value) {
-                table = table + '<tr>';
-
-                /* utilizado para colocar cor da linha intercalada entre cinza e branco
-                if ((key % 2) == 0) {
-                    table = table + '<tr class="alt">';
-                }
-                else {
-                    table = table + '<tr class="alt1">';
-                }
-                */
-                var col = 0;
+                table += '<tr>';
                 $.each(value, function (key, value) {
                     var celcolor = '';
-                    if (IsNumeric(value)) {
-                        displayValue = formatNumber(value, 0);
-                        if (col > 0 && col < 4) {
-                            if (value == 0)
-                                celcolor = ' bgcolor="#fff000"';
-                            else if (value < 0)
-                                celcolor = ' bgcolor="#ff0000"><font color="#fff"';
-                            else
-                                celcolor = ' bgcolor="#66ff00"';
-                        }
-                    } else {
-                        displayValue = value;
-                    }
-                    table = table + '<td' + celcolor + '>' + formatNumber(value, 0) + '</td>';
-                    col++;
 
+                    if (key == 'atividade')
+                        celcolor = 'style="font-weight:bold"';
+
+                    table += '<td ' + celcolor + '>' + value + '</td>';
                 });
+
                 table = table + '</tr>';
 
-            });
-            //table += '<tr><td><strong>Totais</strong></td>';
-            for (var i = 0; i < totalGeral.length; i++) {
-                var celcolor = '';
-                if (i < 3) {
-                    if (totalGeral[i] == 0)
-                        celcolor = ' bgcolor="#fff000"';
-                    else if (totalGeral[i] < 0)
-                        celcolor = ' bgcolor="#ff0000"><font color="#fff"';
-                    else
-                        celcolor = ' bgcolor="#66ff00"';
-                }
-                table += '<td' + celcolor + '><strong>' + formatNumber(totalGeral[i], 0) + '</strong></td>';
-            }
-            table += '</tr>';
+            });            
             $('#' + tbodyID).html(table);
         }
 
@@ -410,25 +396,6 @@
                 </div>
             </div>
         </div>
-
-        <!--
-			<div class="one_wrap" >
-				<div class = "multiselect">
-					<div class = "selectBox" onclick="showCheckboxes()">
-						<select>
-							<option> Select an option</option>
-						</select>
-						<div class="overSelect"></div>
-					</div>
-					<div id="checkboxes">
-						<label for="one"><input type="checkbox" id="one"/>First checkbox</label>
-						<label for="two"><input type="checkbox" id="two"/>Second checkbox</label>
-						<label for="three"><input type="checkbox" id="three"/>Third checkbox</label>
-					</div>
-				</div>
-				<button onclick="javascript:validate();">Validate</button>
-			</div>
-			-->
     </div>
 
     <div id="chartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;"></div>
@@ -445,21 +412,6 @@
                             <tr>
                                 <th bgcolor="#5d7b9d">
                                     <font color="#fff">Atividades Internas</th>
-                                <!--<td class="tg-us36">Executivo</td>
-                                <th bgcolor="#5d7b9d">
-                                    <font color="#fff">Atividade</th>
-                                <th bgcolor="#5d7b9d">
-                                    <font color="#fff">Descrição</th>
-                                
-                                <td class="tg-us36">Visitas Recomendadas</td>
-						<td class="tg-us36">Visitas Planejadas</td>
-						<td class="tg-us36">Visitas Realizadas</td>
-						<td class="tg-us36">GAP</td>
-						<td class="tg-us36">Visitas Recomendadas</td>
-						<td class="tg-us36">Visitas Planejadas</td>
-						<td class="tg-us36">Visitas Realizadas</td>
-						<td class="tg-us36">GAP</td>
-                            </tr> -->
                         </thead>
                         <thead>
                             <tr>
@@ -467,22 +419,32 @@
                                     <font color="#fff">Atividade</th>
                                 <th bgcolor="#5d7b9d">
                                     <font color="#fff">Descrição</th>
-                                <!--   <th bgcolor="#5d7b9d">
-                                    <font color="#fff">Visitas Planejadas</th>
-                                <th bgcolor="#5d7b9d">
-                                    <font color="#fff">Visitas Realizadas</th>	
-                                <th bgcolor="#5d7b9d">
-                                    <font color="#fff">Visitas Recomendadas</th>
-                                <th bgcolor="#5d7b9d">
-                                    <font color="#fff">Visitas Planejadas</th>
-                                <th bgcolor="#5d7b9d">
-                                    <font color="#fff">Visitas Realizadas</th>
-                                <th bgcolor="#5d7b9d">
-                                    <font color="#fff">GAP</th> -->
                             </tr>
                         </thead>
 
                         <tbody id="griddiv" style="width: 100%; height: 100px; background-color: #FFFFFF; overflow: auto;"></tbody>
+                    </table>
+                    <div>
+                        </br>
+                    </div>
+                </div>
+                <div class="datagrid" style="width: 100; overflow: auto;">
+                    <table class="table_data">
+                        <thead>
+                            <tr>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Atividades Externas</th>
+                        </thead>
+                        <thead>
+                            <tr>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Atividade</th>
+                                <th bgcolor="#5d7b9d">
+                                    <font color="#fff">Descrição</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="griddiv2" style="width: 100%; height: 100px; background-color: #FFFFFF; overflow: auto;"></tbody>
                     </table>
                 </div>
                 <div class="widget_legend">

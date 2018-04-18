@@ -439,15 +439,6 @@
                     $(this).addClass("selected");
                 }
             });
-            // $('select.filtro_cliente').on('change', function(event) {
-
-            //     divLoadCharts(ArrayDataProviderChart);
-            //     if (detectmob() == false)
-            //         divLoadGrid(ArrayDataProviderGrid, "griddiv");
-            //     else
-            //         document.getElementById("container_table").style.display = 'none';
-
-            // });
         });
 
         function groupBy(array, f) {
@@ -460,25 +451,38 @@
 
                 groups[group].push(o);
             });
-            return Object.keys(groups).map(function (group) {
+
+            var result = Object.keys(groups).map(function (group) {
                 var programada = 0;
                 var naoprogramada = 0;
                 var description;
-                var customer;
+
+                description = groups[group][0].description;
 
                 groups[group].forEach(function (value) {
                     programada += value.programada;
                     naoprogramada += value.naoprogramada
-
-                    description = value.description;
-                    customer = value.customer;
                 });
+
                 return {
                     description,
-                    customer,
                     programada,
                     naoprogramada
                 };
+            });
+            
+            return result.map(o => {
+                var description = o.description;
+                var programada = o.programada;
+                var naoprogramada = o.naoprogramada;
+                var description_total = description + '<br>' + (o.programada + o.naoprogramada);
+                
+                return {
+                    description,
+                    programada,
+                    naoprogramada,
+                    description_total
+                }
             });
         }
 
@@ -486,9 +490,9 @@
             var groups = {};
             array.forEach(function (o) {
                 var group = f(o);
-                
+
                 if (!groups[group])
-					groups[group] = [];
+                    groups[group] = [];
 
                 groups[group].push(o);
             });
@@ -608,7 +612,7 @@
 
             AmCharts.makeChart("chartdiv", {
                 "type": "serial",
-                "categoryField": "description",
+                "categoryField": "description_total",
                 "startDuration": 1,
                 "categoryAxis": {
                     "gridPosition": "start"
@@ -635,7 +639,7 @@
                 "valueAxes": [{
                     "id": "ValueAxis-1",
                     "stackType": "regular",
-                    "totalText": "[[total]]",
+                    "totalText": "",
                     "totalTextColor": "#000000",
                     "title": "Axis title"
                 }],
@@ -691,7 +695,6 @@
                 $.each(groupByToGrid(arrayGroup, i => i.customer),
                     function (key, value) {
                         group += '<tr>';
-                        console.log(value);
                         $.each(value, function (columKey, columnValue) {
                             var celcolor = '';
 
