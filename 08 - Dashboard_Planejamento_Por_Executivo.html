@@ -106,9 +106,9 @@
                 var group = f(o);
 
                 var newgroup = groups[group];
-                
+
                 if (!groups[group])
-					groups[group] = [];
+                    groups[group] = [];
 
                 groups[group].push(o);
             });
@@ -120,14 +120,14 @@
                     qtde += value.qtde;
                 });
                 return {
-                    qtde,
-                    status
+                    "qtde" : qtde,
+                    "status" : status
                 };
             });
         }
 
         $(document).ready(function () {
-            var groupedArray = groupBy(ArrayDataFilter, i => i.status);
+            var groupedArray = groupBy(ArrayDataFilter, function (i) { return i.status });
             divLoadCharts(groupedArray);
         });
     </script>

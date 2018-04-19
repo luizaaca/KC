@@ -1029,20 +1029,20 @@
             }
 
             if (conditions.indexOf(typeFilter) >= 0 && conditions.indexOf(visitFilter) >= 0) {
-                buildFilterTipo(groupedData.map(i => i.tipo).filter((value, index, self) => self.indexOf(value) === index));
-                buildFilterVisita(groupedData.map(i => i.visita).filter((value, index, self) => self.indexOf(value) === index));
+                buildFilterTipo(groupedData.map(function (i) { return i.tipo }).filter(function (value, index, self) { return self.indexOf(value) === index }));
+                buildFilterVisita(groupedData.map(function (i) { return i.visita }).filter(function (value, index, self) { return self.indexOf(value) === index }));
             } else {
                 if (typeFilter && typeFilter != "Todos") {
-                    groupedData = groupedData.filter(i => i.tipo == typeFilter);
-                    groupedDataGrid = groupedDataGrid.filter(i => i.tipo == typeFilter);
+                    groupedData = groupedData.filter(function (i) { return i.tipo == typeFilter });
+                    groupedDataGrid = groupedDataGrid.filter(function (i) { return i.tipo == typeFilter });
                 }
                 if (visitFilter && visitFilter != "Todos") {
-                    groupedData = groupedData.filter(i => i.visita == visitFilter);
-                    groupedDataGrid = groupedDataGrid.filter(i => i.visita == visitFilter);
+                    groupedData = groupedData.filter(function (i) { return i.visita == visitFilter });
+                    groupedDataGrid = groupedDataGrid.filter(function (i) { return i.visita == visitFilter });
                 }
             }
 
-            divLoadCharts(groupBy(groupedData, i => i.pedido));
+            divLoadCharts(groupBy(groupedData, function (i) { return i.pedido }));
             divLoadGrid(groupedDataGrid, "griddiv");
         }
 
@@ -1066,9 +1066,9 @@
                     sempedido += value.sempedido;
                 });
                 return {
-                    customer,
-                    compedido,
-                    sempedido
+                    "customer": customer,
+                    "compedido" : compedido,
+                    "sempedido" : sempedido
                 };
             });
         }
@@ -1092,8 +1092,8 @@
                     qtde += value.qtde;
                 });
                 return {
-                    pedido,
-                    qtde
+                    "pedido":pedido,
+                    "qtde": qtde
                 };
             });
         }
@@ -1182,7 +1182,7 @@
             var total;
             var totalGeral = new Array(0, 0);
 
-            var salesmans = array.map(item => item.salesman).filter(function (value, index, self) {
+            var salesmans = array.map(function (item) { return item.salesman }).filter(function (value, index, self) {
                 return self.indexOf(value) === index;
             }).sort();
 
@@ -1193,11 +1193,11 @@
                     return 1;
                 return 0;
             }
-            salesmans.forEach(salesman => {
+            salesmans.forEach(function (salesman) {
                 var group = '';
                 var subTotal = new Array(0, 0);
                 var arrayGroup = array.filter(function (item) { return item.salesman == salesman });
-                $.each(groupByToGrid(arrayGroup, i => i.customer).sort(compare), function (key, value) {
+                $.each(groupByToGrid(arrayGroup, function (i) { return i.customer }).sort(compare), function (key, value) {
                     group += '<tr class="detail-' + salesman + ' hidden">';
                     $.each(value, function (key, value) {
                         var celcolor = '';

@@ -95,7 +95,7 @@
 			var dataAgroupedbyLoja = undefined;
 
 			if (!filter) {
-				var filters = ArrayDataProviderChart.map(i => i.rede).filter(function (value, index, self) {
+				var filters = ArrayDataProviderChart.map(function (i) { return i.rede }).filter(function (value, index, self) {
 					return self.indexOf(value) === index;
 				}).sort();
 				buildFilter(filters);
@@ -103,10 +103,10 @@
 				filter = filters[0];
 			}
 
-			dataAgroupedbyLoja = ArrayDataProviderChart.filter(i => i.rede == filter);
+			dataAgroupedbyLoja = ArrayDataProviderChart.filter(function (i) { return i.rede == filter });
 
 			divLoadCharts(dataAgroupedbyLoja);
-			divLoadGrid(ArrayDataProviderTable.filter(i => i.rede == filter), "griddiv");
+			divLoadGrid(ArrayDataProviderTable.filter(function (i) { return i.rede == filter }), "griddiv");
 		}
 
 		function isMobile() {

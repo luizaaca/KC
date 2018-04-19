@@ -221,14 +221,14 @@
             }
 
             if (!(typeFilter != undefined && typeFilter != "Todos")) {
-                buildFilterTipo(groupedData.map(i => i.tipo).filter((value, index, self) => self.indexOf(value) === index));
+                buildFilterTipo(groupedData.map(function (i) { return i.tipo }).filter(function (value, index, self) { return self.indexOf(value) === index }));
             } else {
                 groupedData = groupedData.filter(function (item) {
                     return item.tipo == typeFilter;
                 });
             }
 
-            divLoadCharts(groupBy(groupedData, i => i.categoria));
+            divLoadCharts(groupBy(groupedData, function (i) { return i.categoria }));
             divLoadGrid(ArrayDataProviderGrid, "griddiv");
             divLoadGrid(ArrayDataProviderGrid2, "griddiv2");
         }
@@ -252,8 +252,8 @@
                     valor += value.valor;
                 });
                 return {
-                    categoria,
-                    valor
+                    "categoria": categoria,
+                    "valor": valor
                 };
             });
         }

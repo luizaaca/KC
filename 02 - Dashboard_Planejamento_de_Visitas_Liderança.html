@@ -107,7 +107,76 @@
 
     <script type="text/javascript">
         // <!--var ArrayDataProvider = [[mc1_l:WTM_META_DE_VENDA]];-->
-        var perfil = 'gerente';
+        var perfil = 'presidente';
+
+        var ArrayDataProviderChartTotalBrasil = new Array(
+            {
+                "description": "Visitas de Pedido",
+                "customer": "KCC",
+                "gerencia": "BK2",
+                "crn": "BR23",
+                "programada": 981,
+                "naoprogramada": 850
+            }, {
+                "description": "Visitas de Negociação",
+                "customer": "KCC1",
+                "gerencia": "BK2",
+                "crn": "BR23",
+                "programada": 7118,
+                "naoprogramada": 7114
+            }, {
+                "description": "Visitas à Loja (DPSM)",
+                "customer": "KCC1",
+                "gerencia": "BK2",
+                "crn": "BR23",
+                "programada": 7118,
+                "naoprogramada": 11115
+
+            }, {
+                "description": "Visitas de Pedido",
+                "customer": "KCC1",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 681,
+                "naoprogramada": 1250
+            }, {
+                "description": "Visitas de Negociação",
+                "customer": "KCC1",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 8118,
+                "naoprogramada": 7114
+            }, {
+                "description": "Visitas à Loja (DPSM)",
+                "customer": "KCC2",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 7118,
+                "naoprogramada": 5115
+
+            }, {
+                "description": "Visitas de Pedido",
+                "customer": "KCC2",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 481,
+                "naoprogramada": 550
+            }, {
+                "description": "Visitas de Negociação",
+                "customer": "KCC1",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 2118,
+                "naoprogramada": 3114
+            }, {
+                "description": "Visitas à Loja (DPSM)",
+                "customer": "KCC",
+                "gerencia": "BK3",
+                "crn": "BR23",
+                "programada": 1198,
+                "naoprogramada": 11500
+
+            });
 
         var ArrayDataProviderChartCRN = new Array(
             {
@@ -515,23 +584,23 @@
                 });
 
                 return {
-                    description,
-                    programada,
-                    naoprogramada
+                    "description": description,
+                    "programada": programada,
+                    "naoprogramada": naoprogramada
                 };
             });
 
-            return result.map(o => {
+            return result.map(function (o) {
                 var description = o.description;
                 var programada = o.programada;
                 var naoprogramada = o.naoprogramada;
                 var description_total = description + '<br>' + (o.programada + o.naoprogramada);
 
                 return {
-                    description,
-                    programada,
-                    naoprogramada,
-                    description_total
+                    "description": description,
+                    "programada": programada,
+                    "naoprogramada": naoprogramada,
+                    "description_total": description_total
                 }
             });
         }
@@ -573,16 +642,16 @@
                     owner = value.owner;
                 });
                 return {
-                    customer,
-                    owner,
-                    dpsmrecomendada,
-                    dpsmplanejadas,
-                    dpsmrealizadas,
-                    dpsmgap,
-                    pednegrecomendada,
-                    pednegplanejadas,
-                    pednegrealizadas,
-                    pedneggap
+                    "customer": customer,
+                    "owner":owner,
+                    "dpsmrecomendada" : dpsmrecomendada,
+                    "dpsmplanejadas" : dpsmplanejadas,
+                    "dpsmrealizadas" : dpsmrealizadas,
+                    "dpsmgap": dpsmgap,
+                    "pednegrecomendada":pednegrecomendada,
+                    "pednegplanejadas":pednegplanejadas,
+                    "pednegrealizadas": pednegrealizadas,
+                    "pedneggap": pedneggap
                 };
             });
         }
@@ -755,14 +824,14 @@
             //     ArrayDataFilter = filterWithLoop(array, 'customer', $filtro_cliente);
 
             var table = '';
-            var owners = ArrayDataFilter.map(item => item.owner).filter(function (value, index, self) {
+            var owners = ArrayDataFilter.map(function (item) { return item.owner }).filter(function (value, index, self) {
                 return self.indexOf(value) === index;
             }).sort();
-            owners.forEach(owner => {
+            owners.forEach(function (owner) {
                 var group = '';
                 var totalGeral = new Array(0, 0, 0, 0, 0, 0, 0, 0);
                 var arrayGroup = ArrayDataFilter.filter(function (item) { return item.owner == owner });
-                $.each(groupByToGrid(arrayGroup, i => i.customer),
+                $.each(groupByToGrid(arrayGroup, function (i) { return i.customer }),
                     function (key, value) {
                         group += '<tr class="detail-' + owner + ' hidden">';
                         $.each(value, function (columKey, columnValue) {

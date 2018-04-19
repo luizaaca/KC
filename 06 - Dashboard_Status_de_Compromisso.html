@@ -223,11 +223,11 @@
             var total;
             var totalGeral = new Array(0, 0, 0, 0, 0, 0);
 
-            var salesmans = ArrayDataFilter.map(item => item.salesmans).filter(function (value, index, self) {
+            var salesmans = ArrayDataFilter.map(function (item) { return item.salesmans }).filter(function (value, index, self) {
                 return self.indexOf(value) === index;
             }).sort();
 
-            salesmans.forEach(salesman => {
+            salesmans.forEach(function (salesman) {
                 var group = '';
                 var subTotal = new Array(0, 0, 0, 0, 0, 0);
                 var arrayGroup = ArrayDataFilter.filter(function (item) { return item.salesmans == salesman });
