@@ -1,0 +1,214 @@
+<!-- WTM-DashboardTemplateMaker -->
+<html>
+
+<head>
+	<title>Dashboard - Gestão de Vendas</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- <link href="file:///android_asset/Style/style.css" rel="stylesheet" type="text/css" /> -->
+	<!-- <link href="file:///android_asset/Style/dash.css" rel="stylesheet" type="text/css" />				 -->
+	<!-- <script src="file:///android_asset/js/amcharts.js" type="text/javascript"></script> -->
+	<!-- <script src="file:///android_asset/js/pie.js" type="text/javascript"></script> -->
+	<!-- <script src="file:///android_asset/js/serial.js" type="text/javascript"></script> -->
+	<!-- <script src="file:///android_asset/js/MC1Lib.js" type="text/javascript"></script> -->
+	<!-- <script src="file:///android_asset/js/gauge.js" type="text/javascript"></script> -->
+	<!-- <script src="file:///android_asset/js/funnel.js" type="text/javascript"></script> -->
+
+	<link href="Style/style.css" rel="stylesheet" type="text/css" />
+	<link href="Style/dash.css" rel="stylesheet" type="text/css" />
+	<link href="Style/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+	<link href="Style/jquery-ui.structure.min.css" rel="stylesheet" type="text/css" />
+	<link href="Style/jquery-ui.theme.min.css" rel="stylesheet" type="text/css" />
+
+	<script src="js/amcharts.js" type="text/javascript"></script>
+	<script src="js/pie.js" type="text/javascript"></script>
+	<script src="js/serial.js" type="text/javascript"></script>
+	<script src="js/MC1Lib.js" type="text/javascript"></script>
+	<script src="js/gauge.js" type="text/javascript"></script>
+	<script src="js/funnel.js" type="text/javascript"></script>
+	<script src="js/jquery-ui.min.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+
+		var dataInicial = undefined;
+		var dataFinal = undefined;
+
+		$(document).ready(function () {
+			var dateFormat = "dd/mm/yy";
+
+			var from = $("#filtro_datade")
+				.datepicker({
+					showOn: "button",
+					buttonImage: "Style/images/calendar.gif",
+					buttonImageOnly: true,
+					dateFormat: "dd/mm/yy"
+				})
+				.on("change", function () {
+					to.datepicker("option", "minDate", getDate(this));
+					dataInicial = getDate(this);
+					divLoadCharts();
+				});
+			var to = $("#filtro_datapara")
+				.datepicker({
+					showOn: "button",
+					buttonImage: "Style/images/calendar.gif",
+					buttonImageOnly: true,
+					dateFormat: "dd/mm/yy"
+				})
+				.on("change", function () {
+					from.datepicker("option", "maxDate", getDate(this));
+					dataFinal = getDate(this);
+					divLoadCharts();
+				});
+
+			function getDate(element) {
+				var date;
+				try {
+					date = $.datepicker.parseDate(dateFormat, element.value);
+				} catch (error) {
+					date = null;
+				}
+
+				return date;
+			}
+
+			divLoadCharts();
+		});
+
+		function groupBy(array, f) {
+			var groups = {};
+			array.forEach(function (o) {
+				var group = f(o);
+
+				if (!groups[group])
+					groups[group] = [];
+
+				groups[group].push(o);
+			});
+			return Object.keys(groups).map(function (group) {
+				var valor = 0;
+				var categoria = groups[group][0].categoria;
+
+				groups[group].map(function (value) {
+					valor += value.valor * 1;
+				});
+				return {
+					"valor": valor,
+					"categoria": categoria
+				};
+			});
+		}
+
+		function divLoadCharts() {
+			var myArrayTaskingTechnic =
+				[
+					{ "valor": "2155.5", "datade": "2018-03-08 00:00:00.000", "datapara": "2018-04-04 00:00:00.000", "categoria": "Bloqueado Vendas" },
+					{ "valor": "2255.5", "datade": "2018-03-09 00:00:00.000", "datapara": "2018-04-06 00:00:00.000", "categoria": "Liberado" },
+					{ "valor": "2355.5", "datade": "2018-03-10 00:00:00.000", "datapara": "2018-04-08 00:00:00.000", "categoria": "Liberado" },
+					{ "valor": "2455.5", "datade": "2018-04-08 00:00:00.000", "datapara": "2018-05-04 00:00:00.000", "categoria": "Liberado" }
+				];
+			var taskingTechnic = myArrayTaskingTechnic.filter(function () { return true });
+
+			function parseDateString(date) {
+				var s = date.split(' ')[0].split('-');
+				return new Date(s[0], --s[1], s[2], 0, 0, 0, 0);
+			}
+
+			if (dataInicial)
+				taskingTechnic = myArrayTaskingTechnic.filter(function (item) {
+					var data = parseDateString(item.datade);
+					return new Date(data) >= dataInicial;
+				});
+
+			if (dataFinal)
+				taskingTechnic = taskingTechnic.filter(function (item) {
+					var data = parseDateString(item.datapara);
+					return new Date(data) <= dataFinal;
+				});
+
+			taskingTechnic = groupBy(taskingTechnic, function (item) { return item.categoria });
+
+			AmCharts.makeChart("chartdiv",
+				{
+					"type": "pie",
+					"labelsEnabled": false,
+					"decimalSeparator": ",",
+					"thousandsSeparator": ".",
+					"precision": 2,
+					"titleField": "categoria",
+					"valueField": "valor",
+					"allLabels": [],
+					"colors": [
+						"#04D215",
+						"#0D8ECF",
+						"#edd11a",
+						"#ff6021",
+						"#754DEB",
+						"#DDDDDD",
+						"#999999",
+						"#333333",
+						"#000000",
+						"#57032A",
+						"#CA9726",
+						"#990000",
+						"#4B0C25"
+					],
+					"balloon": {
+						"balloonText": "[[title]]",
+						"fillAlphas": 1,
+						"id": "AmGraph-1",
+						"title": "valor",
+						"type": "column",
+						"valueField": "valor",
+					},
+					"legend": {
+						"enabled": true,
+						"align": "center",
+						"markerType": "circle",
+						"valueWidth": 85
+					},
+					"dataProvider": taskingTechnic
+				}
+			);
+		}
+	</script>
+
+	<style>
+		.filtro {
+			border-width: 1px;
+			border-style: solid;
+			border-radius: 5px;
+			border-color: #C0C0C0;
+			margin-right: 3px;
+			margin-left: 10px;
+			padding: 3px;
+			padding-left: 5px;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			font-size: 18px;
+		}
+
+		.ui-datepicker-trigger {
+			height: 21px;
+			vertical-align: -5px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="container_widget">
+		<div class="one_wrap" style="width: 100%">
+			<div class="widget">
+				<div class="widget_title">
+					<span>STATUS CARTEIRA (tons)</span>
+				</div>
+				<div class="vspace-25 wdt-vd" align="left" style="background-color: #FFFFFF; padding: 10px;">
+					<input id="filtro_datade" type="text" class="filtro" placeholder="Data inicial" disabled />
+					<input id="filtro_datapara" type="text" class="filtro" placeholder="Data final" disabled />
+				</div>
+			</div>
+		</div>
+		<div id="chartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;"></div>
+</body>
+
+</html>
